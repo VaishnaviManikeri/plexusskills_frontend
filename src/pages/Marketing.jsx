@@ -1,7 +1,8 @@
 // Marketing.jsx
 import React from 'react';
 import './Marketing.css';
-
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 // Technology icon paths
 const seoIcon = '/assets/images/seo-icon.png';
 const wordpressIcon = '/assets/images/wordpress-icon.png';
@@ -155,8 +156,11 @@ const Marketing = () => {
               </div>
             </div>
             <div className="mk-hero-buttons">
-              <button className="mk-btn-primary">Enroll Now <IconArrowRight /></button>
-              <button className="mk-btn-secondary">Download Brochure</button>
+<Link to="/contact" className="ds-btn-primary">
+  Enroll Now <IconArrowRight />
+</Link>              <Link to="/brochure" className="mk-btn-secondary">
+                Download Brochure
+              </Link>
             </div>
           </div>
         </div>
@@ -307,8 +311,11 @@ const Marketing = () => {
             with AI-powered tools. Get 100% placement support and hands-on training.
           </p>
           <div className="mk-cta-buttons">
-            <button className="mk-btn-primary">Enroll Now <IconArrowRight /></button>
-            <button className="mk-btn-secondary">Talk to Advisor</button>
+<Link to="/contact" className="mk-btn-primary">
+  Enroll Now <ArrowRight size={18} />
+</Link>            <Link to="/advisor" className="mk-btn-secondary">
+              Talk to Advisor
+            </Link>
           </div>
         </div>
       </section>

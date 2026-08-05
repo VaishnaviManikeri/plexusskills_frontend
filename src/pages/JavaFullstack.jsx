@@ -1,7 +1,7 @@
 // JavaFullstack.jsx
 import React from 'react';
 import './JavaFullstack.css';
-
+import { Link } from "react-router-dom";
 // Technology icon paths
 const javaIcon = '/assets/images/java-icon.png';
 const javaIcon1 = '/assets/images/java-icon1.png';
@@ -154,8 +154,11 @@ const JavaFullstack = () => {
               </div>
             </div>
             <div className="jf-hero-buttons">
-              <button className="jf-btn-primary">Enroll Now <IconArrowRight /></button>
-              <button className="jf-btn-secondary">Download Brochure</button>
+<Link to="/contact" className="ds-btn-primary">
+  Enroll Now <IconArrowRight />
+</Link>              <Link to="/brochure" className="jf-btn-secondary">
+                Download Brochure
+              </Link>
             </div>
           </div>
         </div>
@@ -306,8 +309,11 @@ const JavaFullstack = () => {
             with the power of Generative AI. Get 100% placement support and hands-on training.
           </p>
           <div className="jf-cta-buttons">
-            <button className="jf-btn-primary">Enroll Now <IconArrowRight /></button>
-            <button className="jf-btn-secondary">Talk to Advisor</button>
+<Link to="/contact" className="jf-btn-primary">
+  Enroll Now <IconArrowRight />
+</Link>            <Link to="/advisor" className="jf-btn-secondary">
+              Talk to Advisor
+            </Link>
           </div>
         </div>
       </section>

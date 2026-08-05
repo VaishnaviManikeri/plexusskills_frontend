@@ -1,5 +1,7 @@
 // Home.jsx - Updated CTA Section with Single Button
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 import Testimonials from "../components/Testimonials";
 import { 
@@ -47,7 +49,8 @@ const courses = [
     description: "Become a job-ready Data Analyst by learning the most in-demand analytics tools and AI technologies. This course combines data visualization, business intelligence, Python programming, SQL, and Generative AI to help students analyze data, create dashboards, and make data-driven business decisions.",
     duration: "6 Months",
     level: "Beginner to Advanced",
-    students: "500+"
+    students: "500+",
+    href: "/courses/data-analytics-with-gen-ai"
   },
   {
     id: 2,
@@ -56,7 +59,8 @@ const courses = [
     description: "Master Data Science and Artificial Intelligence with industry-oriented training. Learn how to collect, process, analyze, and build machine learning models using Python while leveraging Generative AI to increase productivity and automate workflows.",
     duration: "8 Months",
     level: "Intermediate to Advanced",
-    students: "400+"
+    students: "400+",
+    href: "/courses/data-science-with-gen-ai"
   },
   {
     id: 3,
@@ -65,7 +69,8 @@ const courses = [
     description: "Become a Full Stack Java Developer by learning front-end, back-end, databases, cloud deployment, and Generative AI tools. Build real-world web applications and prepare for software development careers.",
     duration: "7 Months",
     level: "Beginner to Advanced",
-    students: "350+"
+    students: "350+",
+    href: "/courses/java-fullstack-with-gen-ai"
   },
   {
     id: 4,
@@ -74,7 +79,8 @@ const courses = [
     description: "Build a successful career in Digital Marketing by mastering SEO, Social Media Marketing, Paid Advertising, Content Marketing, Analytics, and AI-powered marketing tools. Gain hands-on experience through live campaigns and real-world projects.",
     duration: "4 Months",
     level: "Beginner to Advanced",
-    students: "300+"
+    students: "300+",
+    href: "/courses/digital-marketing"
   }
 ];
 
@@ -370,6 +376,7 @@ const colleges = [
 ];
 
 export default function Home() {
+  const navigate = useNavigate();
   const [selectedCollege, setSelectedCollege] = useState(colleges[0]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentRow1Index, setCurrentRow1Index] = useState(0);
@@ -512,6 +519,11 @@ export default function Home() {
     setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
+  // ============ HANDLE COURSE NAVIGATION ============
+  const handleCourseNavigation = (href) => {
+    navigate(href);
+  };
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -594,7 +606,10 @@ export default function Home() {
                     <Users size={14} /> {course.students}
                   </span>
                 </div>
-                <button className="course-btn">
+                <button 
+                  className="course-btn"
+                  onClick={() => handleCourseNavigation(course.href)}
+                >
                   Learn More <ChevronRight size={18} />
                 </button>
               </div>
@@ -871,9 +886,11 @@ export default function Home() {
                 Get 100% placement support, expert mentorship, and hands-on training.
               </p>
 
-              <button className="cta-btn-primary">
-                Enroll Now <ArrowRight size={18} />
-              </button>
+             <Link to="/contact">
+  <button className="cta-btn-primary">
+    Enroll Now <ArrowRight size={18} />
+  </button>
+</Link>
 
               <div className="cta-features">
                 <div className="cta-feature">

@@ -2,6 +2,7 @@
 import React from 'react';
 import './DataScience.css';
 
+import { Link } from "react-router-dom";
 // Technology icon paths
 const pythonIcon = '/assets/images/python-icon.png';
 const statsIcon = '/assets/images/stats-icon.png';
@@ -151,8 +152,11 @@ const DataScience = () => {
               </div>
             </div>
             <div className="ds-hero-buttons">
-              <button className="ds-btn-primary">Enroll Now <IconArrowRight /></button>
-              <button className="ds-btn-secondary">Download Brochure</button>
+<Link to="/contact" className="ds-btn-primary">
+  Enroll Now <IconArrowRight />
+</Link>              <Link to="/brochure" className="ds-btn-secondary">
+                Download Brochure
+              </Link>
             </div>
           </div>
         </div>
@@ -303,8 +307,11 @@ const DataScience = () => {
             with the power of Generative AI. Get 100% placement support and hands-on training.
           </p>
           <div className="ds-cta-buttons">
-            <button className="ds-btn-primary">Enroll Now <IconArrowRight /></button>
-            <button className="ds-btn-secondary">Talk to Advisor</button>
+<Link to="/contact" className="ds-btn-primary">
+  Enroll Now <IconArrowRight size={18} />
+</Link>            <Link to="/advisor" className="ds-btn-secondary">
+              Talk to Advisor
+            </Link>
           </div>
         </div>
       </section>

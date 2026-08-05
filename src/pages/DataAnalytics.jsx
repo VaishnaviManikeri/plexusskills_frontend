@@ -1,6 +1,8 @@
 // DataAnalytics.jsx
 import React from 'react';
+import { Link } from "react-router-dom";
 import './DataAnalytics.css';
+import { IconArrowRight } from "@tabler/icons-react";
 import {
   Clock,
   Laptop,
@@ -117,8 +119,11 @@ const DataAnalytics = () => {
               </div>
             </div>
             <div className="da-hero-buttons">
-              <button className="da-btn-primary">Enroll Now <ArrowRight size={18} /></button>
-              <button className="da-btn-secondary">Download Brochure</button>
+<Link to="/contact" className="ds-btn-primary">
+  Enroll Now <IconArrowRight />
+</Link>              <Link to="/brochure" className="da-btn-secondary">
+                Download Brochure
+              </Link>
             </div>
           </div>
         </div>
@@ -270,8 +275,11 @@ const DataAnalytics = () => {
             with the power of Generative AI. Get 100% placement support and hands-on training.
           </p>
           <div className="da-cta-buttons">
-            <button className="da-btn-primary">Enroll Now <ArrowRight size={18} /></button>
-            <button className="da-btn-secondary">Talk to Advisor</button>
+<Link to="/contact" className="da-btn-primary">
+  Enroll Now <ArrowRight size={18} />
+</Link>            <Link to="/advisor" className="da-btn-secondary">
+              Talk to Advisor
+            </Link>
           </div>
         </div>
       </section>
