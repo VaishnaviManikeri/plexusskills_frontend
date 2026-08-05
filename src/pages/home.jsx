@@ -1,6 +1,6 @@
 // Home.jsx - Updated CTA Section with Single Button
 import React, { useState, useEffect, useRef } from "react";
-import "./Home.css";
+import "./home.css";
 import Testimonials from "../components/Testimonials";
 import { 
   Search, 
