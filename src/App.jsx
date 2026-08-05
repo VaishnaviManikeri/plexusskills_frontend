@@ -26,7 +26,7 @@ import Reviews from "./pages/Reviews";
 import "./App.css";
 import DataAnalytics from './pages/DataAnalytics';
 import DataScience from './pages/DataScience';
-import JavaFullStack from './pages/JavaFullStack';
+import JavaFullStack from './pages/JavaFullstack';
 import DigitalMarketing from './pages/Marketing';
 import CollegeTieup from './pages/CollegeTieup';
 import Placement from './pages/Placement';
