@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2.5 rounded-lg hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 border-none cursor-pointer font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg hover:bg-gray-200 transition-all duration-300 border-2 border-gray-200 cursor-pointer font-medium;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200;
+  }
+}
+
+/* Custom Navy Blue Theme Utilities */
+@layer utilities {
+  .text-navy {
+    color: #0a1f44;
+  }
+  .text-navy-700 {
+    color: #1a237e;
+  }
+  .bg-navy {
+    background-color: #0a1f44;
+  }
+  .bg-navy-50 {
+    background-color: #f0f4ff;
+  }
+  .bg-navy-900 {
+    background-color: #0a1f44;
+  }
+  .border-navy {
+    border-color: #0a1f44;
+  }
+  .border-navy-700 {
+    border-color: #1a237e;
+  }
+  
+  /* Purple */
+  .text-purple {
+    color: #7c3aed;
+  }
+  .text-purple-600 {
+    color: #7c3aed;
+  }
+  .bg-purple {
+    background-color: #7c3aed;
+  }
+  .bg-purple-50 {
+    background-color: #f5f3ff;
+  }
+  .bg-purple-100 {
+    background-color: #ede9fe;
+  }
+  .border-purple {
+    border-color: #7c3aed;
+  }
+  .border-purple-600 {
+    border-color: #7c3aed;
+  }
+  
+  /* Pink */
+  .text-pink {
+    color: #ec4899;
+  }
+  .text-pink-600 {
+    color: #ec4899;
+  }
+  .bg-pink {
+    background-color: #ec4899;
+  }
+  .bg-pink-50 {
+    background-color: #fdf2f8;
+  }
+  .border-pink {
+    border-color: #ec4899;
+  }
+  
+  /* Gradients */
+  .bg-gradient-navy-purple-pink {
+    background: linear-gradient(135deg, #0a1f44, #7c3aed, #ec4899);
+  }
+  .bg-gradient-purple-pink {
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+  }
+  .bg-gradient-navy-purple {
+    background: linear-gradient(135deg, #0a1f44, #7c3aed);
+  }
+  .bg-gradient-light {
+    background: linear-gradient(135deg, #f4effc, #ffe9f4);
+  }
+}
