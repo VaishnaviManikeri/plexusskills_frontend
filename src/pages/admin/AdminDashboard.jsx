@@ -86,7 +86,7 @@ const AdminDashboard = () => {
             </Link>
           ))}
         </div>
-
+{/* 
         <div className="mt-8 bg-white rounded-xl shadow-md p-6">
           <h2 className="text-xl font-bold text-navy mb-4">Quick Stats</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -107,7 +107,7 @@ const AdminDashboard = () => {
               <p className="text-sm text-gray-600">Blogs</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
