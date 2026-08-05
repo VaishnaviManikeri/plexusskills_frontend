@@ -21,7 +21,7 @@ import BlogDetails from './pages/BlogDetails';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import About from "./pages/About";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import Reviews from "./pages/Reviews";
 import "./App.css";
 import DataAnalytics from './pages/DataAnalytics';
