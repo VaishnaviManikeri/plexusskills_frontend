@@ -135,6 +135,13 @@
   transition: all 0.3s ease;
 }
 
+.topbar-badge-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .topbar-badge:hover {
   background: rgba(255, 255, 255, 0.18);
   color: #ffffff;
@@ -297,6 +304,7 @@
   transform-origin: top right;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(212, 165, 55, 0.12);
+  z-index: 1200;
 }
 
 .navbar-dropdown-menu.is-open {
@@ -360,8 +368,12 @@
 
 /* ---------- Register Button ---------- */
 .navbar-register-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, #761E6B, #E31B23);
   color: #ffffff;
+  text-decoration: none;
   border: none;
   padding: 0.7rem 2rem;
   border-radius: 8px;
@@ -449,8 +461,8 @@
   .navbar-right {
     position: absolute;
     top: calc(100% + 0.8rem);
-    left: 1rem;
-    right: 1rem;
+    left: 0;
+    right: 0;
     background: #ffffff;
     border-radius: 16px;
     flex-direction: column;
@@ -464,8 +476,10 @@
   }
 
   .navbar-right--open {
-    max-height: 600px;
+    max-height: min(72vh, 680px);
     padding: 0.5rem 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .navbar-link {
@@ -611,7 +625,7 @@
   }
 
   .navbar-right--open {
-    max-height: 500px;
+    max-height: min(70vh, 620px);
   }
 }
 
@@ -682,7 +696,7 @@
   }
 
   .navbar-right--open {
-    max-height: 450px;
+    max-height: min(68vh, 560px);
   }
 
   .navbar-register-btn {

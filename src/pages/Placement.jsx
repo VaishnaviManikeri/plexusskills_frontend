@@ -1,5 +1,6 @@
 // Placement.jsx
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./Placement.css";
 import {
   Briefcase,
@@ -55,7 +56,7 @@ const placementStats = [
   { id: 1, icon: <Users size={28} />, number: "500+", label: "Students Placed" },
   { id: 2, icon: <TrendingUp size={28} />, number: "54%", label: "Average Salary Hike" },
   { id: 3, icon: <Award size={28} />, number: "220+", label: "Hiring Partners" },
-  { id: 4, icon: <Building2 size={28} />, number: "26+", label: "College Tie-ups" }
+  { id: 4, icon: <Building2 size={28} />, number: "26+", label: "College Tie-Ups" }
 ];
 
 // ============ PLACEMENT HIGHLIGHTS ============
@@ -387,12 +388,12 @@ const Placement = () => {
               Join Plexus Skills and get access to our extensive hiring network
             </p>
             <div className="placement-cta-buttons">
-              <button className="cta-btn-primary">
+              <Link to="/#courses" className="cta-btn-primary">
                 Explore Programs <ArrowRight size={18} />
-              </button>
-              <button className="cta-btn-secondary">
-                <Phone size={18} /> Talk to Advisor
-              </button>
+              </Link>
+              <Link to="/advisor" className="cta-btn-secondary">
+                <Phone size={18} /> Talk to an Adviser
+              </Link>
             </div>
           </div>
         </div>

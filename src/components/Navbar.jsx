@@ -16,12 +16,13 @@ const coursesLinks = [
 
 const discoverLinks = [
   { label: "About Us", href: "/about" },
-  { label: "College Tieups", href: "/college-tieups" },
+  { label: "College Tie-Ups", href: "/college-tieups" },
   { label: "Placement", href: "/placement" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blogs", href: "/blogs" },
   { label: "Notices", href: "/notice" },
   { label: "Careers", href: "/careers" },
+  { label: "Webinars", href: "/webinars" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -51,6 +52,7 @@ export default function Navbar() {
     function handleResize() {
       if (window.innerWidth > 992) {
         setMenuOpen(false);
+        setDiscoverOpen(false);
       }
     }
     window.addEventListener("resize", handleResize);
@@ -96,8 +98,8 @@ export default function Navbar() {
               </a>
             </div>
             <div className="topbar-divider"></div>
-            <span className="topbar-badge">Enroll Now</span>
-            <span className="topbar-badge">Placement Support</span>
+            <a href="/enroll" className="topbar-badge topbar-badge-link">Enroll Now</a>
+            <a href="/placement" className="topbar-badge topbar-badge-link">Placement Support</a>
           </div>
         </div>
       </div>
@@ -114,14 +116,19 @@ export default function Navbar() {
             <div className="navbar-dropdown" ref={coursesRef}>
               <button
                 className="navbar-courses-btn"
-                onClick={() => setCoursesOpen((prev) => !prev)}
+                onClick={() => {
+                  setCoursesOpen((prev) => !prev);
+                  setDiscoverOpen(false);
+                }}
                 aria-expanded={coursesOpen}
+                aria-controls="courses-menu"
               >
                 Courses
                 <FaChevronDown className={`navbar-caret ${coursesOpen ? "is-open" : ""}`} />
               </button>
 
               <div
+                id="courses-menu"
                 className={`navbar-dropdown-menu navbar-dropdown-menu--left ${
                   coursesOpen ? "is-open" : ""
                 }`}
@@ -150,15 +157,20 @@ export default function Navbar() {
           {/* Hamburger toggle for mobile */}
           <button
             className={`navbar-hamburger ${menuOpen ? "is-active" : ""}`}
-            onClick={() => setMenuOpen((prev) => !prev)}
+            onClick={() => {
+              setMenuOpen((prev) => !prev);
+              setCoursesOpen(false);
+              setDiscoverOpen(false);
+            }}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
 
           {/* Right side: Reviews, Discover dropdown, Register Now */}
-          <nav className={`navbar-right ${menuOpen ? "navbar-right--open" : ""}`}>
+          <nav id="primary-navigation" className={`navbar-right ${menuOpen ? "navbar-right--open" : ""}`}>
             <a href="/reviews" className="navbar-link">
               Reviews
             </a>
@@ -166,7 +178,10 @@ export default function Navbar() {
             <div className="navbar-dropdown" ref={dropdownRef}>
               <button
                 className="navbar-dropdown-toggle"
-                onClick={() => setDiscoverOpen((prev) => !prev)}
+                onClick={() => {
+                  setDiscoverOpen((prev) => !prev);
+                  setCoursesOpen(false);
+                }}
                 aria-expanded={discoverOpen}
               >
                 Discover
@@ -194,9 +209,13 @@ export default function Navbar() {
               </div>
             </div>
 
-            <button className="navbar-register-btn">
+            <a
+              href="/webinars"
+              className="navbar-register-btn"
+              onClick={() => setMenuOpen(false)}
+            >
               Register Now
-            </button>
+            </a>
           </nav>
         </div>
       </div>

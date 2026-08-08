@@ -683,6 +683,7 @@
   border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
   transform: translateY(15px);
   opacity: 0;

@@ -31,6 +31,10 @@ import DigitalMarketing from './pages/Marketing';
 import CollegeTieup from './pages/CollegeTieup';
 import Placement from './pages/Placement';
 import Contact from './pages/Contact';
+import Advisor from './pages/Advisor';
+import CourseRegistration from './pages/CourseRegistration';
+import Webinar from './pages/Webinar';
+import './styles/CtaTheme.css';
 
 // Icons
 import { FaWhatsapp, FaTimes, FaMinus, FaRobot, FaPaperPlane, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
@@ -119,7 +123,7 @@ function App() {
   const [messages, setMessages] = useState([
     { 
       type: 'bot', 
-      text: '👋 Hi there! I\'m Plexus AI Assistant. I can help you with:\n\n• Course Information\n• College Tie-ups\n• Placement Opportunities\n• Fee Details\n• Career Guidance\n\nWhat would you like to know?' 
+      text: '👋 Hi there! I\'m Plexus AI Assistant. I can help you with:\n\n• Course Information\n• College Tie-Ups\n• Placement Opportunities\n• Fee Details\n• Career Guidance\n\nWhat would you like to know?'
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
@@ -181,9 +185,9 @@ function App() {
       return response;
     }
 
-    // Check for college tie-ups
+    // Check for college Tie-Ups
     if (lowerQuery.includes('college') || lowerQuery.includes('tie-up') || lowerQuery.includes('tieup') || lowerQuery.includes('university')) {
-      let response = '🏛 **Our College Tie-ups:**\n\n';
+      let response = '🏛 **Our College Tie-Ups:**\n\n';
       const displayColleges = collegeTieups.slice(0, 10);
       displayColleges.forEach(college => {
         response += `• ${college}\n`;
@@ -230,7 +234,7 @@ function App() {
     }
 
     // Default response
-    return `I'm here to help you with information about Plexus Skills! You can ask me about:\n\n📚 Courses & Programs\n💰 Fee Structure\n⏱ Course Durations\n🏛 College Tie-ups\n🏢 Placement Companies\n📞 Contact Information\n🎓 Career Opportunities\n\nWhat would you like to know more about?`;
+    return `I'm here to help you with information about Plexus Skills! You can ask me about:\n\n📚 Courses & Programs\n💰 Fee Structure\n⏱ Course Durations\n🏛 College Tie-Ups\n🏢 Placement Companies\n📞 Contact Information\n🎓 Career Opportunities\n\nWhat would you like to know more about?`;
   };
 
   const handleKeyPress = (e) => {
@@ -262,6 +266,9 @@ function App() {
           <Route path="/college-tieups" element={<CollegeTieup />} />
           <Route path="/placement" element={<Placement />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/advisor" element={<Advisor />} />
+          <Route path="/enroll" element={<CourseRegistration />} />
+          <Route path="/webinars" element={<Webinar />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={
             <ProtectedRoute>
@@ -398,10 +405,10 @@ function App() {
                     💼 Placement
                   </button>
                   <button onClick={() => {
-                    setInputMessage('Tell me about college tie-ups');
+                    setInputMessage('Tell me about college Tie-Ups');
                     setTimeout(() => handleSendMessage(), 100);
                   }}>
-                    🏛 Tie-ups
+                    🏛 Tie-Ups
                   </button>
                   <button onClick={() => {
                     setInputMessage('Tell me about fees');

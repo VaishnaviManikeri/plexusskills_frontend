@@ -12,7 +12,7 @@ const Reviews = () => {
   const reviews = [
     {
       id: 1,
-      name: "Yousuf sk",
+      name: "Yousouf Sk",
       program: "Data Analytics Program",
       rating: 5,
       date: "2026",
@@ -24,7 +24,7 @@ const Reviews = () => {
     },
     {
       id: 2,
-      name: "Sanny Prajapati",
+      name: "Sunny Prajapathi",
       program: "Java full stack development course",
       rating: 5,
       date: "2026",
@@ -36,7 +36,7 @@ const Reviews = () => {
     },
     {
       id: 3,
-      name: "Jai shree Ram ji Chauhan",
+      name: "Sriram Chavan",
       program: "Data Analytics training",
       rating: 5,
       date: "2025",
@@ -60,7 +60,7 @@ const Reviews = () => {
     },
     {
       id: 5,
-      name: "prathamesh andhare",
+      name: "Prathamesh Andhare",
       program: "JAVA developer with AI workshop",
       rating: 5,
       date: "2026",
@@ -72,7 +72,7 @@ const Reviews = () => {
     },
     {
       id: 6,
-      name: "Nick",
+      name: "Nitin Jadhav",
       program: "Data Analytics course",
       rating: 5,
       date: "2026",

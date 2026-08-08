@@ -1,5 +1,6 @@
 // CollegeTieup.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './CollegeTieup.css';
 
 // Simple SVG Icon components
@@ -75,6 +76,32 @@ const IconChevronDown = () => (
 const CollegeTieup = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCity, setSelectedCity] = useState('All');
+  const [showPartnershipForm, setShowPartnershipForm] = useState(false);
+  const [partnershipSubmitted, setPartnershipSubmitted] = useState(false);
+  const [partnershipForm, setPartnershipForm] = useState({
+    name: '',
+    designation: '',
+    contact: '',
+    email: '',
+    collegeName: ''
+  });
+
+  const handlePartnershipChange = (event) => {
+    setPartnershipForm((current) => ({
+      ...current,
+      [event.target.name]: event.target.value
+    }));
+  };
+
+  const handlePartnershipSubmit = (event) => {
+    event.preventDefault();
+    setPartnershipSubmitted(true);
+  };
+
+  const closePartnershipForm = () => {
+    setShowPartnershipForm(false);
+    setPartnershipSubmitted(false);
+  };
 
   const colleges = [
     { 
@@ -522,11 +549,67 @@ const CollegeTieup = () => {
             with industry-relevant training and placement opportunities.
           </p>
           <div className="tieup-cta-buttons">
-            <button className="tieup-btn-primary">Partner With Us <IconArrowRight /></button>
-            <button className="tieup-btn-secondary">Contact Us</button>
+            <button type="button" className="tieup-btn-primary" onClick={() => setShowPartnershipForm(true)}>
+              Partner With Us <IconArrowRight />
+            </button>
+            <Link to="/contact" className="tieup-btn-secondary">Contact Us</Link>
           </div>
         </div>
       </section>
+
+      {showPartnershipForm && (
+        <div className="partnership-modal-overlay" onClick={closePartnershipForm}>
+          <div className="partnership-modal" role="dialog" aria-modal="true" aria-labelledby="partnership-title" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="partnership-close" onClick={closePartnershipForm} aria-label="Close partnership form">×</button>
+            {partnershipSubmitted ? (
+              <div className="partnership-success" role="status">
+                <div className="partnership-success-icon">✓</div>
+                <h2 id="partnership-title">Registration received!</h2>
+                <p>Thank you, {partnershipForm.name}. Our partnership team will contact you shortly.</p>
+                <button type="button" className="tieup-btn-primary" onClick={closePartnershipForm}>Done</button>
+              </div>
+            ) : (
+              <>
+                <div className="partnership-modal-header">
+                  <span>College Partnership</span>
+                  <h2 id="partnership-title">Partner With Us</h2>
+                  <p>Register your institution to explore training and placement opportunities.</p>
+                </div>
+                <form className="partnership-form" onSubmit={handlePartnershipSubmit}>
+                  <label>
+                    Name
+                    <input name="name" value={partnershipForm.name} onChange={handlePartnershipChange} autoFocus required placeholder="Enter your full name" />
+                  </label>
+                  <label>
+                    Designation
+                    <select name="designation" value={partnershipForm.designation} onChange={handlePartnershipChange} required>
+                      <option value="">Select designation</option>
+                      <option>Faculty</option>
+                      <option>Department Head</option>
+                      <option>TPO</option>
+                      <option>Vice Principal</option>
+                      <option>Principal</option>
+                    </select>
+                  </label>
+                  <label>
+                    Contact No.
+                    <input type="tel" name="contact" value={partnershipForm.contact} onChange={handlePartnershipChange} required placeholder="Enter contact number" />
+                  </label>
+                  <label>
+                    Email ID
+                    <input type="email" name="email" value={partnershipForm.email} onChange={handlePartnershipChange} required placeholder="Enter email address" />
+                  </label>
+                  <label className="partnership-full-field">
+                    College Name
+                    <input name="collegeName" value={partnershipForm.collegeName} onChange={handlePartnershipChange} required placeholder="Enter college name" />
+                  </label>
+                  <button type="submit" className="partnership-submit">Submit Registration <IconArrowRight /></button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,225 @@
+:root {
+  --plexus-cta-purple: #761e6b;
+  --plexus-cta-red: #e31b23;
+  --plexus-cta-navy: #001c46;
+  --plexus-cta-gradient: linear-gradient(135deg, #761e6b 0%, #e31b23 100%);
+  --plexus-cta-height: 48px;
+  --plexus-cta-radius: 10px;
+}
+
+/* One consistent CTA footprint; existing width rules remain intact. */
+.app :is(
+  .navbar-register-btn,
+  .hero-cta,
+  .search-btn,
+  .course-btn,
+  .cta-btn-primary,
+  .cta-btn-secondary,
+  .popup-submit-btn,
+  .submit-btn,
+  .da-btn-primary,
+  .da-btn-secondary,
+  .ds-btn-primary,
+  .ds-btn-secondary,
+  .jf-btn-primary,
+  .jf-btn-secondary,
+  .mk-btn-primary,
+  .mk-btn-secondary,
+  .tieup-btn-primary,
+  .tieup-btn-secondary,
+  .webinar-primary-btn,
+  .webinar-card-cta,
+  .webinar-submit-btn,
+  .offer-view-more
+),
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn) {
+  min-height: var(--plexus-cta-height) !important;
+  padding: 0 22px !important;
+  border-radius: var(--plexus-cta-radius) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* Shared primary actions across public-facing pages. */
+.app :is(
+  .navbar-register-btn,
+  .hero-cta,
+  .search-btn,
+  .course-btn,
+  .cta-btn-primary,
+  .popup-submit-btn,
+  .submit-btn,
+  .da-btn-primary,
+  .ds-btn-primary,
+  .jf-btn-primary,
+  .mk-btn-primary,
+  .tieup-btn-primary,
+  .webinar-primary-btn,
+  .webinar-card-cta,
+  .webinar-submit-btn,
+  .offer-view-more
+),
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn) {
+  background: var(--plexus-cta-gradient) !important;
+  background-color: var(--plexus-cta-purple) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(118, 30, 107, 0.24) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease !important;
+}
+
+.app :is(
+  .navbar-register-btn,
+  .hero-cta,
+  .search-btn,
+  .course-btn,
+  .cta-btn-primary,
+  .popup-submit-btn,
+  .submit-btn,
+  .da-btn-primary,
+  .ds-btn-primary,
+  .jf-btn-primary,
+  .mk-btn-primary,
+  .tieup-btn-primary,
+  .webinar-primary-btn,
+  .webinar-card-cta,
+  .webinar-submit-btn,
+  .offer-view-more
+):hover,
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(227, 27, 35, 0.3) !important;
+  opacity: 0.96;
+}
+
+/* Shared secondary actions retain the same brand palette. */
+.app :is(
+  .cta-btn-secondary,
+  .da-btn-secondary,
+  .ds-btn-secondary,
+  .jf-btn-secondary,
+  .mk-btn-secondary,
+  .tieup-btn-secondary
+) {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: var(--plexus-cta-purple) !important;
+  border-color: var(--plexus-cta-purple) !important;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 28, 70, 0.1) !important;
+  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.app :is(
+  .cta-btn-secondary,
+  .da-btn-secondary,
+  .ds-btn-secondary,
+  .jf-btn-secondary,
+  .mk-btn-secondary,
+  .tieup-btn-secondary
+):hover {
+  background: var(--plexus-cta-gradient) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(118, 30, 107, 0.25) !important;
+}
+
+.app :is(
+  .navbar-register-btn,
+  .hero-cta,
+  .search-btn,
+  .course-btn,
+  .cta-btn-primary,
+  .cta-btn-secondary,
+  .popup-submit-btn,
+  .submit-btn,
+  .da-btn-primary,
+  .da-btn-secondary,
+  .ds-btn-primary,
+  .ds-btn-secondary,
+  .jf-btn-primary,
+  .jf-btn-secondary,
+  .mk-btn-primary,
+  .mk-btn-secondary,
+  .tieup-btn-primary,
+  .tieup-btn-secondary,
+  .webinar-primary-btn,
+  .webinar-card-cta,
+  .webinar-submit-btn,
+  .offer-view-more
+):focus-visible,
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn):focus-visible {
+  outline: 3px solid rgba(118, 30, 107, 0.28) !important;
+  outline-offset: 3px;
+}
+
+.app :is(.popup-submit-btn, .submit-btn, .webinar-submit-btn):disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none !important;
+}
+
+.app .webinar-session-card .webinar-card-cta {
+  align-self: stretch;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Keep the two Placement closing CTAs visually balanced. */
+.app .placement-cta-buttons :is(.cta-btn-primary, .cta-btn-secondary) {
+  width: 220px;
+  height: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+  flex: 0 0 220px;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  .app .placement-cta-buttons :is(.cta-btn-primary, .cta-btn-secondary) {
+    width: 100%;
+    max-width: 320px;
+    flex-basis: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app :is(
+    .hero-cta,
+    .search-btn,
+    .course-btn,
+    .cta-btn-primary,
+    .cta-btn-secondary,
+    .popup-submit-btn,
+    .submit-btn,
+    .da-btn-primary,
+    .da-btn-secondary,
+    .ds-btn-primary,
+    .ds-btn-secondary,
+    .jf-btn-primary,
+    .jf-btn-secondary,
+    .mk-btn-primary,
+    .mk-btn-secondary,
+    .tieup-btn-primary,
+    .tieup-btn-secondary,
+    .webinar-primary-btn,
+    .webinar-card-cta,
+    .webinar-submit-btn,
+    .offer-view-more
+  ) {
+    width: 100%;
+  }
+}

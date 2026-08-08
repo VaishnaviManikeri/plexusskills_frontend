@@ -11,7 +11,7 @@ const coursesLinks = [
 
 const discoverLinks = [
   { label: "About Us", href: "/about" },
-  { label: "College Tieups", href: "/college-tieups" },
+  { label: "College Tie-Ups", href: "/college-tieups" },
   { label: "Placement", href: "/placement" },
   { label: "Gallery", href: "/gallery" },
   { label: "Blogs", href: "/blogs" },
@@ -21,7 +21,7 @@ const discoverLinks = [
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "Reviews", href: "/reviews" },
-  { label: "Register Now", href: "/register" },
+  { label: "Register Now", href: "/webinars" },
   // { label: "Privacy Policy", href: "/privacy-policy" },
   // { label: "Terms & Conditions", href: "/terms-and-conditions" },
 ];

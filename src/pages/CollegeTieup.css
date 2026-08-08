@@ -474,7 +474,29 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
+
+.partnership-modal-overlay { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(3,18,52,.68); backdrop-filter: blur(6px); }
+.partnership-modal { position: relative; width: 100%; max-width: 650px; max-height: calc(100vh - 40px); overflow-y: auto; box-sizing: border-box; padding: 36px; border-radius: 24px; background: #fff; box-shadow: 0 28px 75px rgba(0,0,0,.3); }
+.partnership-close { position: absolute; top: 14px; right: 16px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: #f0f2f7; color: #031234; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.partnership-modal-header { margin-bottom: 24px; text-align: center; }
+.partnership-modal-header > span { color: #761e6b; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+.partnership-modal-header h2 { margin: 7px 0; color: #031234; font-size: 2rem; }
+.partnership-modal-header p { margin: 0; color: #667087; line-height: 1.6; }
+.partnership-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.partnership-form label { display: flex; flex-direction: column; gap: 7px; color: #27334d; font-weight: 700; }
+.partnership-form input, .partnership-form select { box-sizing: border-box; width: 100%; padding: 13px 14px; border: 1px solid #d9deea; border-radius: 10px; background: #fff; color: #031234; font: inherit; }
+.partnership-form input:focus, .partnership-form select:focus { border-color: #761e6b; outline: 2px solid rgba(118,30,107,.18); }
+.partnership-full-field, .partnership-submit { grid-column: 1 / -1; }
+.partnership-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #761e6b, #e31b23); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.partnership-success { display: flex; min-height: 330px; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.partnership-success-icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: #e7f7ee; color: #168a4a; font-size: 2.2rem; font-weight: 800; }
+.partnership-success p { color: #667087; }
+@media (max-width: 600px) { .partnership-modal { padding: 30px 20px 24px; } .partnership-form { grid-template-columns: 1fr; } .partnership-full-field, .partnership-submit { grid-column: auto; } }
 
 .tieup-btn-secondary:hover {
   background: rgba(3, 18, 52, 0.05);

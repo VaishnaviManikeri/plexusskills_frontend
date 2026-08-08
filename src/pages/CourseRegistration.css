@@ -1,0 +1,22 @@
+.registration-page { min-height: 100vh; padding-bottom: 80px; background: #f4f6fb; color: #031234; }
+.registration-hero { padding: 90px 24px 115px; text-align: center; color: #fff; background: linear-gradient(135deg, #031234, #761e6b); }
+.registration-hero-icon { display: block; margin: 0 auto 12px; font-size: 2.5rem; color: #ffcb45; }
+.registration-hero > span { font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.registration-hero h1 { margin: 12px 0; font-size: clamp(2.3rem, 6vw, 4rem); }
+.registration-hero h1 strong { color: #ffcb45; }
+.registration-hero p { max-width: 650px; margin: auto; font-size: 1.08rem; line-height: 1.7; }
+.registration-card { max-width: 900px; min-height: 400px; margin: -65px auto 0; padding: 38px; border-radius: 24px; background: #fff; box-shadow: 0 20px 55px rgba(3,18,52,.14); }
+.registration-heading h2 { margin: 0; font-size: 1.8rem; }
+.registration-heading p { margin: 6px 0 24px; color: #687289; }
+.registration-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.registration-form label { display: flex; flex-direction: column; gap: 8px; color: #27334d; font-weight: 700; }
+.registration-form input, .registration-form select, .registration-form textarea { box-sizing: border-box; width: 100%; padding: 13px 14px; border: 1px solid #d8deea; border-radius: 10px; background: #fff; color: #031234; font: inherit; }
+.registration-form input:focus, .registration-form select:focus, .registration-form textarea:focus { border-color: #761e6b; outline: 2px solid rgba(118,30,107,.18); }
+.registration-full { grid-column: 1 / -1; }
+.registration-consent { flex-direction: row !important; align-items: flex-start; margin: 22px 0; font-weight: 500 !important; }
+.registration-consent input { width: auto; margin-top: 4px; }
+.registration-submit, .registration-success button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 14px 25px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #761e6b, #e31b23); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.registration-success { display: flex; min-height: 400px; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.registration-success > svg { color: #168a4a; font-size: 4rem; }
+.registration-success p { max-width: 580px; color: #687289; line-height: 1.7; }
+@media (max-width: 700px) { .registration-card { margin: 24px 16px 0; padding: 24px; } .registration-grid { grid-template-columns: 1fr; } .registration-full { grid-column: auto; } .registration-submit { width: 100%; } }

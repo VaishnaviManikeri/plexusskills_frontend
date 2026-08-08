@@ -1,0 +1,61 @@
+/* Keep webinar typography consistent with the Home page. */
+.webinar-page {
+  font-family: inherit;
+}
+
+.webinar-page button,
+.webinar-page input,
+.webinar-page select,
+.webinar-page textarea {
+  font-family: inherit;
+}
+
+/* The modal is portalled to document.body, so it needs its own brand tokens. */
+.webinar-modal-backdrop {
+  --wb-navy: #001c46;
+  --wb-purple: #761e6b;
+  --wb-red: #e31b23;
+  --wb-muted: #64748b;
+  font-family: inherit;
+}
+
+.webinar-form-wide {
+  grid-column: 1 / -1;
+}
+
+.webinar-form .webinar-submit-btn {
+  width: 100%;
+  min-height: 56px;
+  border: 0;
+  border-radius: 12px;
+  padding: 15px 24px;
+  background: linear-gradient(100deg, #761e6b 0%, #e31b23 100%);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(227, 27, 35, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.webinar-form .webinar-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(227, 27, 35, 0.34);
+}
+
+.webinar-form .webinar-submit-btn:focus-visible {
+  outline: 3px solid rgba(118, 30, 107, 0.25);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .webinar-form-wide {
+    grid-column: auto;
+  }
+}

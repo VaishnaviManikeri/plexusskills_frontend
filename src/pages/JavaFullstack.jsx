@@ -154,11 +154,11 @@ const JavaFullstack = () => {
               </div>
             </div>
             <div className="jf-hero-buttons">
-<Link to="/contact" className="ds-btn-primary">
+<Link to="/enroll?course=Java%20Full%20Stack%20Development%20with%20Generative%20AI" className="ds-btn-primary">
   Enroll Now <IconArrowRight />
-</Link>              <Link to="/brochure" className="jf-btn-secondary">
+</Link>              <a href="/assets/brochure/JAVA.pdf" download="Plexus-Java-Full-Stack-Brochure.pdf" className="jf-btn-secondary">
                 Download Brochure
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -309,10 +309,10 @@ const JavaFullstack = () => {
             with the power of Generative AI. Get 100% placement support and hands-on training.
           </p>
           <div className="jf-cta-buttons">
-<Link to="/contact" className="jf-btn-primary">
+<Link to="/enroll?course=Java%20Full%20Stack%20Development%20with%20Generative%20AI" className="jf-btn-primary">
   Enroll Now <IconArrowRight />
-</Link>            <Link to="/advisor" className="jf-btn-secondary">
-              Talk to Advisor
+</Link>            <Link to="/advisor?course=Java%20Full%20Stack%20Development%20with%20Generative%20AI" className="jf-btn-secondary">
+              Talk to an Adviser
             </Link>
           </div>
         </div>

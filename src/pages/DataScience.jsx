@@ -152,11 +152,11 @@ const DataScience = () => {
               </div>
             </div>
             <div className="ds-hero-buttons">
-<Link to="/contact" className="ds-btn-primary">
+<Link to="/enroll?course=Data%20Science%20with%20Generative%20AI" className="ds-btn-primary">
   Enroll Now <IconArrowRight />
-</Link>              <Link to="/brochure" className="ds-btn-secondary">
+</Link>              <a href="/assets/brochure/DATA%20SCIENCE.pdf" download="Plexus-Data-Science-Brochure.pdf" className="ds-btn-secondary">
                 Download Brochure
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -307,10 +307,10 @@ const DataScience = () => {
             with the power of Generative AI. Get 100% placement support and hands-on training.
           </p>
           <div className="ds-cta-buttons">
-<Link to="/contact" className="ds-btn-primary">
+<Link to="/enroll?course=Data%20Science%20with%20Generative%20AI" className="ds-btn-primary">
   Enroll Now <IconArrowRight size={18} />
-</Link>            <Link to="/advisor" className="ds-btn-secondary">
-              Talk to Advisor
+</Link>            <Link to="/advisor?course=Data%20Science%20with%20Generative%20AI" className="ds-btn-secondary">
+              Talk to an Adviser
             </Link>
           </div>
         </div>

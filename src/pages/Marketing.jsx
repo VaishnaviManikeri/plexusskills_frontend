@@ -156,7 +156,7 @@ const Marketing = () => {
               </div>
             </div>
             <div className="mk-hero-buttons">
-<Link to="/contact" className="ds-btn-primary">
+<Link to="/enroll?course=Digital%20Marketing" className="ds-btn-primary">
   Enroll Now <IconArrowRight />
 </Link>              <Link to="/brochure" className="mk-btn-secondary">
                 Download Brochure
@@ -311,10 +311,10 @@ const Marketing = () => {
             with AI-powered tools. Get 100% placement support and hands-on training.
           </p>
           <div className="mk-cta-buttons">
-<Link to="/contact" className="mk-btn-primary">
+<Link to="/enroll?course=Digital%20Marketing" className="mk-btn-primary">
   Enroll Now <ArrowRight size={18} />
-</Link>            <Link to="/advisor" className="mk-btn-secondary">
-              Talk to Advisor
+</Link>            <Link to="/advisor?course=Digital%20Marketing" className="mk-btn-secondary">
+              Talk to an Adviser
             </Link>
           </div>
         </div>

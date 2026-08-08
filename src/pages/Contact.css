@@ -372,11 +372,68 @@
   gap: 1.5rem;
 }
 
-.map-container {
+.contact-map-card {
   background: var(--white);
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+}
+
+.contact-map-header {
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.contact-map-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.contact-map-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--white);
+  background: var(--gradient);
+}
+
+.contact-map-heading h3 {
+  margin: 0 0 0.15rem;
+  color: var(--navy);
+  font-size: 1rem;
+}
+
+.contact-map-heading p {
+  margin: 0;
+  color: var(--gray-mid);
+  font-size: 0.8rem;
+}
+
+.contact-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--gradient-start);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contact-map-link:hover {
+  color: var(--gradient-end);
+}
+
+.map-container {
+  overflow: hidden;
   height: 350px;
 }
 
@@ -559,7 +616,16 @@
   }
 
   .map-container {
-    height: 200px;
+    height: 240px;
+  }
+
+  .contact-map-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-map-link {
+    margin-left: 3.4rem;
   }
 
   .social-icons {

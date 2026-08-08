@@ -101,8 +101,8 @@ const DataAnalytics = () => {
             <p>
               Become a job-ready Data Analyst by learning the most in-demand analytics tools 
               and AI technologies. This course combines data visualization, business intelligence, 
-              Python programming, SQL, and Generative AI to help students analyze data, create 
-              dashboards, and make data-driven business decisions.
+              Python programming, SQL and Generative AI to analyze data, create dashboards
+              and make data-driven business decisions.
             </p>
             <div className="da-hero-stats">
               <div className="da-stat">
@@ -119,11 +119,11 @@ const DataAnalytics = () => {
               </div>
             </div>
             <div className="da-hero-buttons">
-<Link to="/contact" className="ds-btn-primary">
+<Link to="/enroll?course=Data%20Analytics%20with%20Generative%20AI" className="ds-btn-primary">
   Enroll Now <IconArrowRight />
-</Link>              <Link to="/brochure" className="da-btn-secondary">
+</Link>              <a href="/assets/brochure/DATA%20ANALYTICS.pdf" download="Plexus-Data-Analytics-Brochure.pdf" className="da-btn-secondary">
                 Download Brochure
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -136,8 +136,8 @@ const DataAnalytics = () => {
           <p>
             Become a job-ready Data Analyst by learning the most in-demand analytics tools 
             and AI technologies. This course combines data visualization, business intelligence, 
-            Python programming, SQL, and Generative AI to help students analyze data, create 
-            dashboards, and make data-driven business decisions.
+            Python programming, SQL and Generative AI to analyze data, create dashboards
+            and make data-driven business decisions.
           </p>
         </div>
       </section>
@@ -171,8 +171,8 @@ const DataAnalytics = () => {
             <p className="da-detail-value">5 Months</p>
             <span className="da-detail-sub">Comprehensive training program</span>
             <div className="da-detail-features">
-              <span>✓ Weekend & Weekday Batches</span>
-              <span>✓ Flexible Schedule</span>
+              <span>Weekend & Weekday Batches</span>
+              <span>Flexible Schedule</span>
             </div>
           </div>
 
@@ -190,8 +190,8 @@ const DataAnalytics = () => {
               ))}
             </div>
             <div className="da-detail-features">
-              <span>✓ Live Interactive Sessions</span>
-              <span>✓ Recorded Lectures Available</span>
+              <span>Live Interactive Sessions</span>
+              <span>Recorded Lectures Available</span>
             </div>
           </div>
 
@@ -209,7 +209,7 @@ const DataAnalytics = () => {
               ))}
             </div>
             <div className="da-detail-features">
-              <span>✓ No prior coding experience required</span>
+              <span>No prior coding experience required</span>
             </div>
           </div>
 
@@ -224,8 +224,8 @@ const DataAnalytics = () => {
             <p className="da-fee-amount">₹35,000 /-</p>
             <span className="da-fee-note">Flexible payment options available</span>
             <div className="da-detail-features">
-              <span>✓ EMI Options Available</span>
-              <span>✓ Group Discounts</span>
+              <span>EMI Options Available</span>
+              <span>Group Discounts</span>
             </div>
           </div>
         </div>
@@ -275,10 +275,10 @@ const DataAnalytics = () => {
             with the power of Generative AI. Get 100% placement support and hands-on training.
           </p>
           <div className="da-cta-buttons">
-<Link to="/contact" className="da-btn-primary">
+<Link to="/enroll?course=Data%20Analytics%20with%20Generative%20AI" className="da-btn-primary">
   Enroll Now <ArrowRight size={18} />
-</Link>            <Link to="/advisor" className="da-btn-secondary">
-              Talk to Advisor
+</Link>            <Link to="/advisor?course=Data%20Analytics%20with%20Generative%20AI" className="da-btn-secondary">
+              Talk to an Adviser
             </Link>
           </div>
         </div>

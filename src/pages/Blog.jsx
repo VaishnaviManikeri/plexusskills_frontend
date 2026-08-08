@@ -355,7 +355,7 @@ const Blog = () => {
                 Enroll Now
               </Link>
               <Link
-                to="/courses"
+                to="/#courses"
                 className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-[#001C46] transition-all"
               >
                 Explore Courses

@@ -208,18 +208,37 @@ const Contact = () => {
 
           {/* Right - Map & Social */}
           <div className="contact-right-wrapper">
-            <div className="map-container">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.511955120724!2d73.82150357380021!3d18.50575311962941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa2b504b769d2e53f%3A0x6d2f92907e1fd82d!2sPlexus%20Skills%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1785835802931!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                title="Plexus Skills Location"
-                className="map-iframe"
-              ></iframe>
+            <div className="contact-map-card">
+              <div className="contact-map-header">
+                <div className="contact-map-heading">
+                  <span className="contact-map-icon"><FaMapMarkerAlt /></span>
+                  <div>
+                    <h3>Our Location</h3>
+                    <p>Paud Phata, Karve Road, Pune</p>
+                  </div>
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Plexus+Skills+Pvt+Ltd+Paud+Phata+Karve+Road+Pune+Maharashtra+411038"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-map-link"
+                >
+                  Get Directions <FaPaperPlane />
+                </a>
+              </div>
+              <div className="map-container">
+                <iframe
+                  src="https://www.google.com/maps?q=Plexus+Skills+Pvt+Ltd,+Paud+Phata,+Karve+Road,+Pune,+Maharashtra+411038&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Map showing Plexus Skills, Paud Phata, Pune"
+                  className="map-iframe"
+                ></iframe>
+              </div>
             </div>
 
             <div className="social-connect">

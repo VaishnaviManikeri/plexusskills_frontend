@@ -46,7 +46,7 @@ const courses = [
     id: 1,
     title: "Data Analytics with Generative AI",
     icon: <BarChart2 size={32} />,
-    description: "Become a job-ready Data Analyst by learning the most in-demand analytics tools and AI technologies. This course combines data visualization, business intelligence, Python programming, SQL, and Generative AI to help students analyze data, create dashboards, and make data-driven business decisions.",
+    description: "Become a job-ready Data Analyst by learning the most in-demand analytics tools and AI technologies. This course combines data visualization, business intelligence, Python programming, SQL and Generative AI to analyze data, create dashboards and make data-driven business decisions.",
     duration: "6 Months",
     level: "Beginner to Advanced",
     students: "500+",
@@ -84,6 +84,28 @@ const courses = [
   }
 ];
 
+const searchDestinations = [
+  { label: "Courses", path: "/", sectionId: "courses", keywords: "programs training" },
+  { label: "Data Analytics with Generative AI", path: "/courses/data-analytics-with-gen-ai", keywords: "data analyst analytics course" },
+  { label: "Data Science with Generative AI", path: "/courses/data-science-with-gen-ai", keywords: "data scientist science course" },
+  { label: "Java Full Stack Development with Generative AI", path: "/courses/java-fullstack-with-gen-ai", keywords: "java fullstack developer development course" },
+  { label: "Digital Marketing", path: "/courses/digital-marketing", keywords: "seo social media marketing course" },
+  { label: "Hiring Partners", path: "/", sectionId: "hiring-partners", keywords: "placement companies recruiters jobs" },
+  { label: "Why Choose Us", path: "/", sectionId: "why-choose-us", keywords: "benefits expert trainers curriculum" },
+  { label: "College Tie-Ups", path: "/college-tieups", keywords: "colleges partners university" },
+  { label: "Start Your Career", path: "/", sectionId: "career-cta", keywords: "transform career enroll enquiry" },
+  { label: "About Us", path: "/about", keywords: "about plexus company" },
+  { label: "Placements", path: "/placement", keywords: "jobs companies recruiters hiring" },
+  { label: "Reviews", path: "/reviews", keywords: "testimonials student feedback" },
+  { label: "Gallery", path: "/gallery", keywords: "photos images events" },
+  { label: "Notices", path: "/notice", keywords: "announcements updates" },
+  { label: "Careers", path: "/careers", keywords: "vacancies jobs openings" },
+  { label: "Blogs", path: "/blogs", keywords: "articles news insights" },
+  { label: "Contact Us", path: "/contact", keywords: "phone email address enquiry" },
+  { label: "Talk to an Adviser", path: "/advisor", keywords: "advisor counsellor counseling callback guidance" },
+  { label: "Course Registration", path: "/enroll", keywords: "enroll admission apply register" }
+];
+
 // ============ WHY CHOOSE US DATA ============
 const whyChooseUs = [
   {
@@ -108,7 +130,7 @@ const whyChooseUs = [
     id: 4,
     icon: <Award size={28} />,
     title: "Placement Assistance",
-    description: "With tie-ups across 26+ colleges and a dedicated placement cell, we support students with resume building, interview preparation, and direct industry connections for career success."
+    description: "With Tie-Ups across 26+ colleges and a dedicated placement cell, we support students with resume building, interview preparation, and direct industry connections for career success."
   }
 ];
 
@@ -379,6 +401,7 @@ export default function Home() {
   const navigate = useNavigate();
   const [selectedCollege, setSelectedCollege] = useState(colleges[0]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [collegeSearchTerm, setCollegeSearchTerm] = useState("");
   const [currentRow1Index, setCurrentRow1Index] = useState(0);
   const [currentRow2Index, setCurrentRow2Index] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -406,6 +429,15 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    const sectionId = window.location.hash.slice(1);
+    if (!sectionId) return;
+
+    requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    });
+  }, []);
+
   const handlePopupChange = (e) => {
     setPopupFormData({ ...popupFormData, [e.target.name]: e.target.value });
   };
@@ -427,9 +459,14 @@ export default function Home() {
   };
 
   const filteredColleges = colleges.filter(college =>
-    college.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    college.location.toLowerCase().includes(searchTerm.toLowerCase())
+    college.name.toLowerCase().includes(collegeSearchTerm.toLowerCase()) ||
+    college.location.toLowerCase().includes(collegeSearchTerm.toLowerCase())
   );
+
+  const matchingDestinations = searchDestinations.filter((destination) => {
+    const query = searchTerm.trim().toLowerCase();
+    return query && `${destination.label} ${destination.keywords}`.toLowerCase().includes(query);
+  });
 
   // Split companies into two rows
   const halfIndex = Math.ceil(placementCompanies.length / 2);
@@ -524,6 +561,28 @@ export default function Home() {
     navigate(href);
   };
 
+  const openDestination = (destination) => {
+    setSearchTerm("");
+
+    if (destination.path === "/" && destination.sectionId) {
+      document.getElementById(destination.sectionId)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    navigate(destination.path);
+  };
+
+  const handleExploreNow = () => {
+    openDestination(matchingDestinations[0] || searchDestinations[0]);
+  };
+
+  const handleSearchKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleExploreNow();
+    }
+  };
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -539,18 +598,45 @@ export default function Home() {
           </h1>
           <p className="hero-subtitle">
             Join our comprehensive programs in Data Analytics, Data Science, 
-            Java Development, and Digital Marketing powered by Generative AI
+            Java Full Stack Development and Digital Marketing powered by Generative AI.
           </p>
-          <div className="hero-search">
-            <Search className="search-icon" size={20} />
-            <input
-              type="text"
-              placeholder="Search courses, colleges, or programs..."
-              className="search-input"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button className="search-btn">Explore Now</button>
+          <div className="hero-search-container">
+            <div className="hero-search">
+              <Search className="search-icon" size={20} />
+              <input
+                type="search"
+                placeholder="Search any page or section..."
+                className="search-input"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleSearchKeyDown}
+                aria-label="Search website pages and sections"
+                aria-controls="hero-search-results"
+              />
+              <button type="button" className="search-btn" onClick={handleExploreNow}>
+                Explore Now
+              </button>
+            </div>
+            {searchTerm.trim() && (
+              <div id="hero-search-results" className="hero-search-results" role="listbox">
+                {matchingDestinations.length > 0 ? (
+                  matchingDestinations.slice(0, 6).map((destination) => (
+                    <button
+                      type="button"
+                      className="hero-search-result"
+                      key={`${destination.path}-${destination.sectionId || destination.label}`}
+                      onClick={() => openDestination(destination)}
+                      role="option"
+                    >
+                      <Search size={16} />
+                      <span>{destination.label}</span>
+                    </button>
+                  ))
+                ) : (
+                  <p className="hero-search-empty">No matching page or section found.</p>
+                )}
+              </div>
+            )}
           </div>
           <div className="hero-stats">
             <div className="stat-item">
@@ -564,7 +650,7 @@ export default function Home() {
               <Award size={24} className="stat-icon" />
               <div>
                 <h3>26+</h3>
-                <p>College Tie-ups</p>
+                <p>College Tie-Ups</p>
               </div>
             </div>
             <div className="stat-item">
@@ -579,7 +665,7 @@ export default function Home() {
       </section>
 
       {/* Courses Section */}
-      <section className="courses-section">
+      <section id="courses" className="courses-section">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Our <span className="highlight">Courses</span></h2>
@@ -619,7 +705,7 @@ export default function Home() {
       </section>
 
       {/* Placement Section */}
-      <section className="placement-section">
+      <section id="hiring-partners" className="placement-section">
         <div className="container">
           <div className="section-header">
             <span className="placement-tag">
@@ -722,7 +808,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="why-choose-section">
+      <section id="why-choose-us" className="why-choose-section">
         <div className="container">
           <div className="why-choose-container">
             <div className="why-choose-left">
@@ -771,11 +857,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* College Tie-ups Section */}
-      <section className="college-section">
+      {/* College Tie-Ups Section */}
+      <section id="college-tieups" className="college-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Our <span className="highlight">College Tie-ups</span></h2>
+            <h2 className="section-title">Our <span className="highlight">College Tie-Ups</span></h2>
             <p className="section-subtitle">
               Partnered with leading educational institutions across Maharashtra
             </p>
@@ -793,8 +879,8 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Search colleges..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  value={collegeSearchTerm}
+                  onChange={(e) => setCollegeSearchTerm(e.target.value)}
                 />
               </div>
               <div className="college-list">
@@ -868,7 +954,7 @@ export default function Home() {
       <Testimonials />
 
       {/* ============ CTA SECTION - SINGLE BUTTON ============ */}
-      <section className="cta-section">
+      <section id="career-cta" className="cta-section">
         <div className="container">
           <div className="cta-wrapper">
             <div className="cta-content">
@@ -939,6 +1025,7 @@ export default function Home() {
                       placeholder="Enter your full name"
                       value={popupFormData.name}
                       onChange={handlePopupChange}
+                      autoFocus
                       required
                     />
                   </div>

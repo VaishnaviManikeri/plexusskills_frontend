@@ -1,5 +1,6 @@
 // About.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 import "./about.css";
 import {
   FaLightbulb, FaRocket, FaHandsHelping, FaUsers,
@@ -31,10 +32,10 @@ const About = () => {
   ];
 
   const offers = [
-    { image: offerAnalytics, tag: "Trending", title: "Data Analytics with AI", desc: "Master SQL, Python, and AI-driven analytics" },
-    { image: offerDataScience, tag: "Popular", title: "Data Science with AI", desc: "Deep dive into ML, NLP, and predictive modeling" },
-    { image: offerFullstack, tag: "In-Demand", title: "Full Stack Development", desc: "Modern frameworks, databases, and cloud" },
-    { image: offerCareer, tag: "Bonus", title: "Career Support", desc: "Resume reviews, mock interviews, placement assistance" }
+    { image: offerAnalytics, tag: "Trending", title: "Data Analytics with AI", desc: "Master SQL, Python, and AI-driven analytics", path: "/courses/data-analytics-with-gen-ai" },
+    { image: offerDataScience, tag: "Popular", title: "Data Science with AI", desc: "Deep dive into ML, NLP, and predictive modeling", path: "/courses/data-science-with-gen-ai" },
+    { image: offerFullstack, tag: "In-Demand", title: "Full Stack Development", desc: "Modern frameworks, databases, and cloud", path: "/courses/java-fullstack-with-gen-ai" },
+    { image: offerCareer, tag: "Bonus", title: "Career Support", desc: "Resume reviews, mock interviews, placement assistance", path: "/placement" }
   ];
 
   return (
@@ -180,9 +181,9 @@ const About = () => {
                 <img src={offer.image} alt={offer.title} className="offer-image" />
                 <span className="offer-tag">{offer.tag}</span>
                 <div className="offer-image-overlay">
-                  <button className="offer-view-more">
+                  <Link to={offer.path} className="offer-view-more" aria-label={`View more about ${offer.title}`}>
                     View More <FaArrowRight className="view-more-icon" />
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className="offer-card-body">
