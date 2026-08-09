@@ -1,5 +1,4 @@
 // DataAnalytics.jsx
-import React from 'react';
 import { Link } from "react-router-dom";
 import './DataAnalytics.css';
 import { IconArrowRight } from "@tabler/icons-react";
@@ -12,21 +11,6 @@ import {
   Sparkles,
   ArrowRight,
   Briefcase,
-  Calendar,
-  Users,
-  Award,
-  BookOpen,
-  Code,
-  Database,
-  BarChart3,
-  FileSpreadsheet,
-  LineChart,
-  Brain,
-  Cpu,
-  GitBranch,
-  FileText,
-  Presentation,
-  TrendingUp,
 } from 'lucide-react';
 
 // Technology icon paths

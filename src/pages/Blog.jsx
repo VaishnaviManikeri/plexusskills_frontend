@@ -6,7 +6,6 @@ import {
   FaUser, 
   FaCalendarAlt, 
   FaClock, 
-  FaTag, 
   FaSearch,
   FaArrowRight,
   FaBookOpen,

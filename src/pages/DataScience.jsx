@@ -1,5 +1,4 @@
 // DataScience.jsx
-import React from 'react';
 import './DataScience.css';
 
 import { Link } from "react-router-dom";
@@ -9,9 +8,7 @@ const statsIcon = '/assets/images/stats-icon.png';
 const sqlIcon = '/assets/images/sql-icon.png';
 const powerbiIcon = '/assets/images/powerbi-icon.png';
 const tableauIcon = '/assets/images/tableau-icon.png';
-const excelIcon = '/assets/images/excel-icon.png';
 const visualizationIcon = '/assets/images/visualization-icon.png';
-const businessIcon = '/assets/images/business-icon.png';
 const promptIcon = '/assets/images/prompt-icon.png';
 const genaiIcon = '/assets/images/genai-icon.png';
 const aiAnalysisIcon = '/assets/images/ai-analysis-icon.png';

@@ -1,5 +1,4 @@
 // Reviews.jsx - Editorial Alumni Reviews
-import React from "react";
 import "./Reviews.css";
 import {
   FaStar, FaGoogle, FaLinkedin, FaUserGraduate, FaBriefcase,

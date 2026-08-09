@@ -1,5 +1,5 @@
 // frontend/src/pages/BlogDetails.jsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { blogAPI } from '../api';
 import { 
@@ -15,14 +15,7 @@ const BlogDetails = () => {
   const [error, setError] = useState('');
   const [showShare, setShowShare] = useState(false);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (slug) {
-      fetchBlog();
-    }
-  }, [slug]);
-
-  const fetchBlog = async () => {
+  const fetchBlog = useCallback(async () => {
     try {
       setLoading(true);
       const response = await blogAPI.getBySlug(slug);
@@ -50,7 +43,14 @@ const BlogDetails = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [slug]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (slug) {
+      fetchBlog();
+    }
+  }, [slug, fetchBlog]);
 
   const handleShare = (platform) => {
     const url = window.location.href;
@@ -262,7 +262,7 @@ const BlogDetails = () => {
       </article>
 
       {/* Custom CSS for Blog Content - Updated colors */}
-      <style jsx="true">{`
+      <style>{`
         .blog-content {
           font-size: 18px;
           line-height: 1.8;

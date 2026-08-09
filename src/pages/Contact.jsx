@@ -1,9 +1,9 @@
 // Contact.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Contact.css";
 import {
   FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock,
-  FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn,
+  FaFacebookF, FaInstagram,
   FaPaperPlane, FaCheckCircle, FaUser, FaComment, FaBuilding
 } from "react-icons/fa";
 

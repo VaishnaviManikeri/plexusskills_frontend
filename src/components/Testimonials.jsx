@@ -1,5 +1,5 @@
 // Testimonials.jsx - Small Cards with Navy Background
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Testimonials.css";
 import { 
   FaQuoteLeft, 

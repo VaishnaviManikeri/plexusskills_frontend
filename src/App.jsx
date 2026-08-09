@@ -37,8 +37,7 @@ import Webinar from './pages/Webinar';
 import './styles/CtaTheme.css';
 
 // Icons
-import { FaWhatsapp, FaTimes, FaMinus, FaRobot, FaPaperPlane, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
-import { IoSend } from 'react-icons/io5';
+import { FaWhatsapp, FaTimes, FaMinus, FaPaperPlane } from 'react-icons/fa';
 import aiIcon from '/assets/images/ai.png';
 
 // Course Data for AI Assistant
@@ -170,7 +169,7 @@ function App() {
     // Check for fee-related queries
     if (lowerQuery.includes('fee') || lowerQuery.includes('cost') || lowerQuery.includes('price') || lowerQuery.includes('amount')) {
       let response = '💰 **Course Fees:**\n\n';
-      for (const [key, course] of Object.entries(courseData)) {
+      for (const course of Object.values(courseData)) {
         response += `• ${course.name}: ${course.fee}\n`;
       }
       return response + '\nFor scholarships or EMI options, please contact our admissions team!';
@@ -179,7 +178,7 @@ function App() {
     // Check for duration-related queries
     if (lowerQuery.includes('duration') || lowerQuery.includes('month') || lowerQuery.includes('long')) {
       let response = '⏱ **Course Durations:**\n\n';
-      for (const [key, course] of Object.entries(courseData)) {
+      for (const course of Object.values(courseData)) {
         response += `• ${course.name}: ${course.duration}\n`;
       }
       return response;
@@ -211,7 +210,7 @@ function App() {
     // Check for specific course offerings
     if (lowerQuery.includes('course') || lowerQuery.includes('program') || lowerQuery.includes('offer')) {
       let response = '📚 **Our Courses:**\n\n';
-      for (const [key, course] of Object.entries(courseData)) {
+      for (const course of Object.values(courseData)) {
         response += `• ${course.name} (${course.duration}) - ${course.fee}\n`;
       }
       response += '\nAll courses include:\n✅ 100% Placement Support\n✅ Industry Expert Trainers\n✅ Hands-on Projects\n✅ Communication Skills Training\n✅ Resume & Interview Preparation';

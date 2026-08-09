@@ -1,5 +1,5 @@
 // frontend/src/pages/Gallery.jsx
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { galleryAPI } from '../api';
 import { FaImage, FaVideo, FaTimes, FaPlay, FaTh, FaBars } from 'react-icons/fa';
 

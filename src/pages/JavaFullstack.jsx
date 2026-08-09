@@ -1,5 +1,4 @@
 // JavaFullstack.jsx
-import React from 'react';
 import './JavaFullstack.css';
 import { Link } from "react-router-dom";
 // Technology icon paths

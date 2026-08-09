@@ -1,5 +1,5 @@
 // Placement.jsx
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Placement.css";
 import {
@@ -8,22 +8,18 @@ import {
   Award,
   TrendingUp,
   MapPin,
-  Clock,
   ChevronLeft,
   ChevronRight,
   Building2,
-  Star,
   CheckCircle,
   ArrowRight,
   Phone,
-  Mail,
   Calendar,
   FileText,
   UserCheck,
   Target,
   BarChart3,
-  Sparkles,
-  Zap
+  Sparkles
 } from "lucide-react";
 
 // ============ PLACEMENT COMPANIES DATA ============

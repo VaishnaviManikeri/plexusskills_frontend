@@ -1,5 +1,5 @@
 // Home.jsx - Updated CTA Section with Single Button
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
@@ -24,13 +24,9 @@ import {
   TrendingUp,
   Zap,
   Clock,
-  Building2,
   ChevronLeft,
   ChevronRight as ChevronRightIcon,
   ArrowRight,
-  Phone,
-  Mail,
-  MessageCircle,
   X,
   Send,
   CheckCircle,

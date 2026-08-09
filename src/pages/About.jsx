@@ -1,12 +1,11 @@
 // About.jsx
-import React from "react";
 import { Link } from "react-router-dom";
 import "./about.css";
 import {
   FaLightbulb, FaRocket, FaHandsHelping, FaUsers,
-  FaQuoteLeft, FaGraduationCap, FaBriefcase, FaAward,
-  FaArrowRight, FaCheckCircle, FaStar, FaMedal, FaUserGraduate,
-  FaTrophy, FaCertificate, FaThumbsUp
+  FaQuoteLeft, FaGraduationCap, FaBriefcase,
+  FaArrowRight, FaCheckCircle, FaStar, FaMedal,
+  FaTrophy, FaThumbsUp
 } from "react-icons/fa";
 import aboutIllustration from "/assets/images/about2.png";
 import visionImage from "/assets/images/vision.png";

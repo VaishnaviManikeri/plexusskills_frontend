@@ -1,5 +1,5 @@
 // Navbar.jsx - Professional Design with Top Bar & Social Icons
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import logo from "/assets/logo/logo1.png";
 import { 

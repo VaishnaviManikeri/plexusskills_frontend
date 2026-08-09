@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { blogAPI } from '../../api';
 import { 
-  FaEdit, FaTrash, FaPlus, FaImage, FaVideo, FaUpload, FaLink, 
-  FaPlay, FaFileVideo, FaFileImage, FaTimes, FaEye 
+  FaEdit, FaTrash, FaPlus, FaTimes, FaEye
 } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -122,11 +121,10 @@ const BlogAdmin = () => {
         tags: formData.tags ? formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : [],
       };
       
-      let response;
       if (editingId) {
-        response = await blogAPI.update(editingId, data);
+        await blogAPI.update(editingId, data);
       } else {
-        response = await blogAPI.create(data);
+        await blogAPI.create(data);
       }
       
       setSuccess(`Blog ${editingId ? 'updated' : 'created'} successfully!`);
