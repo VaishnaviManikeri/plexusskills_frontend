@@ -69,10 +69,9 @@ const placementHighlights = [
 const recentPlacements = [
   { id: 1, name: "Deepak Patil", company: "Deloitte", role: "Data Analyst", location: "Bangalore" },
   { id: 2, name: "Ashish Kumar", company: "TCS", role: "Software Engineer", location: "Pune" },
-  { id: 3, name: "Harshada Sukase", company: "Accenture", role: "Business Analyst", location: "Mumbai" },
-  { id: 4, name: "Mohit Sharma", company: "Amazon", role: "Transaction Specialist", location: "Hyderabad" },
-  { id: 5, name: "Priya Deshmukh", company: "Infosys", role: "Data Scientist", location: "Bangalore" },
-  { id: 6, name: "Rahul Patil", company: "Tech Mahindra", role: "Full Stack Developer", location: "Pune" }
+  { id: 3, name: "Mohit Sharma", company: "Amazon", role: "Transaction Specialist", location: "Hyderabad" },
+  { id: 4, name: "Priya Deshmukh", company: "Infosys", role: "Data Scientist", location: "Bangalore" },
+  { id: 5, name: "Rahul Patil", company: "Tech Mahindra", role: "Full Stack Developer", location: "Pune" }
 ];
 
 const Placement = () => {
