@@ -67,7 +67,7 @@ export default function Navbar() {
           <div className="topbar-left">
             <div className="topbar-contact">
               <FaPhone className="topbar-icon" />
-              <span className="topbar-text">+91 95295 07256</span>
+              <span className="topbar-text">+91 78210 07170</span>
             </div>
             <div className="topbar-divider"></div>
             <div className="topbar-contact">

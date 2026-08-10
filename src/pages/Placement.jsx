@@ -52,7 +52,7 @@ const placementStats = [
   { id: 1, icon: <Users size={28} />, number: "500+", label: "Students Placed" },
   { id: 2, icon: <TrendingUp size={28} />, number: "54%", label: "Average Salary Hike" },
   { id: 3, icon: <Award size={28} />, number: "220+", label: "Hiring Partners" },
-  { id: 4, icon: <Building2 size={28} />, number: "26+", label: "College Tie-Ups" }
+  { id: 4, icon: <Building2 size={28} />, number: "150+", label: "Partner Colleges" }
 ];
 
 // ============ PLACEMENT HIGHLIGHTS ============

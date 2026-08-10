@@ -140,7 +140,7 @@ const JavaFullstack = () => {
             </p>
             <div className="jf-hero-stats">
               <div className="jf-stat">
-                <span className="jf-stat-number">6</span>
+                <span className="jf-stat-number">5</span>
                 <span className="jf-stat-label">Months Duration</span>
               </div>
               <div className="jf-stat">
@@ -201,7 +201,7 @@ const JavaFullstack = () => {
               </div>
             </div>
             <h3>Duration</h3>
-            <p className="jf-detail-value">6 Months</p>
+            <p className="jf-detail-value">5 Months</p>
             <span className="jf-detail-sub">Comprehensive training program</span>
             <div className="jf-detail-features">
               <span>Weekend & Weekday Batches</span>

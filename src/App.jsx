@@ -35,6 +35,7 @@ import Advisor from './pages/Advisor';
 import CourseRegistration from './pages/CourseRegistration';
 import Webinar from './pages/Webinar';
 import './styles/CtaTheme.css';
+import './styles/ProfessionalPolish.css';
 
 // Icons
 import { FaWhatsapp, FaTimes, FaMinus, FaPaperPlane } from 'react-icons/fa';
@@ -53,7 +54,7 @@ const courseData = {
   },
   'data science with generative ai': {
     name: 'Data Science with Generative AI',
-    duration: '6 Months',
+    duration: '5 Months',
     fee: '₹40,000',
     mode: 'Online, Offline, Hybrid',
     eligibility: 'Any Graduate, BE/B.Tech, BCA, MCA, B.Sc., M.Sc., MBA, MSc CS / IT / Electronics, Working Professionals',
@@ -62,7 +63,7 @@ const courseData = {
   },
   'java full stack development with generative ai': {
     name: 'Java Full Stack Development with Generative AI',
-    duration: '6 Months',
+    duration: '5 Months',
     fee: '₹35,000',
     mode: 'Online, Offline, Hybrid',
     eligibility: 'BE/B.Tech, BCA, MCA, B.Sc. (CS/IT), Diploma, MSc CS / IT, Working Professionals',
@@ -71,7 +72,7 @@ const courseData = {
   },
   'digital marketing': {
     name: 'Digital Marketing',
-    duration: '3 Months',
+    duration: '4 Months',
     fee: '₹30,000',
     mode: 'Online, Offline, Hybrid',
     eligibility: '12th Pass, Any Graduate, Business Owners, Entrepreneurs, Freelancers, Marketing Professionals, Working Professionals, Students',
@@ -108,6 +109,8 @@ const collegeTieups = [
   'Sharadchandra Pawar College of Engineering and Technology Someshwar nagar Baramati Pune',
   'H B Arts Commerce and Science College Pishor Kannad Chhatrapati Sambhajinagar'
 ];
+
+collegeTieups.sort((a, b) => Number(b.startsWith('Deogiri College')) - Number(a.startsWith('Deogiri College')));
 
 const placementCompanies = [
   'Deloitte', 'TATA CONSULTANCY SERVICES', 'ORACLE', 'amazon', 'MICRO FOCUS',

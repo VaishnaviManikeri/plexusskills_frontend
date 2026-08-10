@@ -1,0 +1,224 @@
+:root {
+  --polish-navy: #031234;
+  --polish-wine: #761e6b;
+  --polish-white: #ffffff;
+  --polish-text: #3f4a5f;
+  --polish-muted: #6b7485;
+  --polish-border: rgba(3, 18, 52, 0.1);
+  --polish-surface: #f8f9fc;
+  --polish-shadow-sm: 0 6px 18px rgba(3, 18, 52, 0.07);
+  --polish-shadow-md: 0 14px 36px rgba(3, 18, 52, 0.11);
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-width: 320px;
+  color: var(--polish-text);
+  background: var(--polish-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(118, 30, 107, 0.3);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(100%, 1200px);
+  margin-inline: auto;
+}
+
+.section-header {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.section-title {
+  letter-spacing: -0.025em;
+}
+
+.section-subtitle {
+  line-height: 1.75;
+}
+
+.navbar-main {
+  box-shadow: 0 5px 22px rgba(3, 18, 52, 0.08);
+}
+
+.navbar-link,
+.navbar-courses-btn,
+.navbar-register-btn,
+.navbar-dropdown-item {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease, transform 180ms ease;
+}
+
+.navbar-dropdown-menu {
+  border: 1px solid var(--polish-border);
+  box-shadow: var(--polish-shadow-md);
+}
+
+.course-card-one-line,
+.placement-logo-item,
+.why-choose-card,
+.college-detail-card,
+.testimonial-card,
+.contact-card,
+.blog-card,
+.placement-card {
+  border-color: var(--polish-border);
+  box-shadow: var(--polish-shadow-sm);
+}
+
+.course-card-one-line:hover,
+.placement-logo-item:hover,
+.why-choose-card:hover,
+.college-detail-card:hover,
+.testimonial-card:hover,
+.contact-card:hover,
+.blog-card:hover,
+.placement-card:hover {
+  box-shadow: var(--polish-shadow-md);
+}
+
+.course-card-one-line .course-btn {
+  min-height: 40px;
+  width: fit-content;
+  border-radius: 8px;
+}
+
+.placement-swiper {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+input,
+select,
+textarea {
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: rgba(3, 18, 52, 0.28);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--polish-wine);
+  box-shadow: 0 0 0 4px rgba(118, 30, 107, 0.09);
+}
+
+.search-btn,
+.navbar-register-btn,
+.hero-cta,
+.cta-button,
+.cta-btn,
+.submit-btn,
+.form-submit,
+[class*="btn-primary"] {
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.search-btn:hover,
+.navbar-register-btn:hover,
+.hero-cta:hover,
+.cta-button:hover,
+.cta-btn:hover,
+.submit-btn:hover,
+.form-submit:hover,
+[class*="btn-primary"]:hover {
+  transform: translateY(-2px);
+  filter: saturate(0.92);
+}
+
+.footer__link-list a,
+.footer__contact a,
+.footer__social-link {
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.footer__link-list a:hover,
+.footer__contact a:hover {
+  transform: translateX(2px);
+}
+
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-section,
+  .placement-section,
+  .college-section,
+  .why-choose-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 8vw, 2.15rem);
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

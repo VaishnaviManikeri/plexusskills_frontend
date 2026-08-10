@@ -142,7 +142,7 @@ const Marketing = () => {
             </p>
             <div className="mk-hero-stats">
               <div className="mk-stat">
-                <span className="mk-stat-number">3</span>
+                <span className="mk-stat-number">4</span>
                 <span className="mk-stat-label">Months Duration</span>
               </div>
               <div className="mk-stat">
@@ -203,7 +203,7 @@ const Marketing = () => {
               </div>
             </div>
             <h3>Duration</h3>
-            <p className="mk-detail-value">3 Months</p>
+            <p className="mk-detail-value">4 Months</p>
             <span className="mk-detail-sub">Comprehensive training program</span>
             <div className="mk-detail-features">
               <span>Weekend & Weekday Batches</span>

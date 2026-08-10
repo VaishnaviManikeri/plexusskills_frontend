@@ -395,6 +395,8 @@ const CollegeTieup = () => {
   // Get unique cities for filter
   const cities = ['All', ...new Set(colleges.map(college => college.city))];
 
+  colleges.sort((a, b) => Number(b.name === 'Deogiri College') - Number(a.name === 'Deogiri College'));
+
   // Filter colleges based on search and city
   const filteredColleges = colleges.filter(college => {
     const matchesSearch = college.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -438,7 +440,7 @@ const CollegeTieup = () => {
             </p>
             <div className="tieup-hero-stats">
               <div className="tieup-stat">
-                <span className="tieup-stat-number">{colleges.length}+</span>
+                <span className="tieup-stat-number">150+</span>
                 <span className="tieup-stat-label">Partner Colleges</span>
               </div>
               <div className="tieup-stat">

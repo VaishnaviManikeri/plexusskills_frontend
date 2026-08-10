@@ -136,7 +136,7 @@ const DataScience = () => {
             </p>
             <div className="ds-hero-stats">
               <div className="ds-stat">
-                <span className="ds-stat-number">6</span>
+                <span className="ds-stat-number">5</span>
                 <span className="ds-stat-label">Months Duration</span>
               </div>
               <div className="ds-stat">
@@ -197,7 +197,7 @@ const DataScience = () => {
               </div>
             </div>
             <h3>Duration</h3>
-            <p className="ds-detail-value">6 Months</p>
+            <p className="ds-detail-value">5 Months</p>
             <span className="ds-detail-sub">Comprehensive training program</span>
             <div className="ds-detail-features">
               <span>Weekend & Weekday Batches</span>

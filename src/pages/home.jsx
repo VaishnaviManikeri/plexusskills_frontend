@@ -1,7 +1,11 @@
 // Home.jsx - Updated CTA Section with Single Button
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, FreeMode } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
 import "./home.css";
 import Testimonials from "../components/Testimonials";
 import { 
@@ -24,8 +28,6 @@ import {
   TrendingUp,
   Zap,
   Clock,
-  ChevronLeft,
-  ChevronRight as ChevronRightIcon,
   ArrowRight,
   X,
   Send,
@@ -43,7 +45,7 @@ const courses = [
     title: "Data Analytics with Generative AI",
     icon: <BarChart2 size={32} />,
     description: "Become a job-ready Data Analyst by learning the most in-demand analytics tools and AI technologies. This course combines data visualization, business intelligence, Python programming, SQL and Generative AI to analyze data, create dashboards and make data-driven business decisions.",
-    duration: "6 Months",
+    duration: "5 Months",
     level: "Beginner to Advanced",
     students: "500+",
     href: "/courses/data-analytics-with-gen-ai"
@@ -53,7 +55,7 @@ const courses = [
     title: "Data Science with Generative AI",
     icon: <Database size={32} />,
     description: "Master Data Science and Artificial Intelligence with industry-oriented training. Learn how to collect, process, analyze, and build machine learning models using Python while leveraging Generative AI to increase productivity and automate workflows.",
-    duration: "8 Months",
+    duration: "5 Months",
     level: "Intermediate to Advanced",
     students: "400+",
     href: "/courses/data-science-with-gen-ai"
@@ -63,7 +65,7 @@ const courses = [
     title: "Java Full Stack Development with Generative AI",
     icon: <Code size={32} />,
     description: "Become a Full Stack Java Developer by learning front-end, back-end, databases, cloud deployment, and Generative AI tools. Build real-world web applications and prepare for software development careers.",
-    duration: "7 Months",
+    duration: "5 Months",
     level: "Beginner to Advanced",
     students: "350+",
     href: "/courses/java-fullstack-with-gen-ai"
@@ -126,7 +128,7 @@ const whyChooseUs = [
     id: 4,
     icon: <Award size={28} />,
     title: "Placement Assistance",
-    description: "With Tie-Ups across 26+ colleges and a dedicated placement cell, we support students with resume building, interview preparation, and direct industry connections for career success."
+    description: "With Tie-Ups across 150+ colleges and a dedicated placement cell, we support students with resume building, interview preparation, and direct industry connections for career success."
   }
 ];
 
@@ -154,6 +156,10 @@ const placementCompanies = [
   { id: 20, name: "MIND IT", logo: "https://minditworks.com/wordpress/wp-content/uploads/2022/12/logo-black-new.png" },
   { id: 21, name: "EY", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/EY_logo_2019.svg/1280px-EY_logo_2019.svg.png" }
 ];
+
+const placementMidpoint = Math.ceil(placementCompanies.length / 2);
+const placementRowOne = placementCompanies.slice(0, placementMidpoint);
+const placementRowTwo = placementCompanies.slice(placementMidpoint);
 
 // ============ COLLEGES DATA ============
 const colleges = [
@@ -393,16 +399,14 @@ const colleges = [
   }
 ];
 
+// Keep Deogiri College first in every college listing.
+colleges.sort((a, b) => Number(b.name === "Deogiri College") - Number(a.name === "Deogiri College"));
+
 export default function Home() {
   const navigate = useNavigate();
   const [selectedCollege, setSelectedCollege] = useState(colleges[0]);
   const [searchTerm, setSearchTerm] = useState("");
   const [collegeSearchTerm, setCollegeSearchTerm] = useState("");
-  const [currentRow1Index, setCurrentRow1Index] = useState(0);
-  const [currentRow2Index, setCurrentRow2Index] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const row1Ref = useRef(null);
-  const row2Ref = useRef(null);
 
   // ============ POPUP STATE ============
   const [showPopup, setShowPopup] = useState(false);
@@ -464,94 +468,6 @@ export default function Home() {
     return query && `${destination.label} ${destination.keywords}`.toLowerCase().includes(query);
   });
 
-  // Split companies into two rows
-  const halfIndex = Math.ceil(placementCompanies.length / 2);
-  const row1Companies = placementCompanies.slice(0, halfIndex);
-  const row2Companies = placementCompanies.slice(halfIndex);
-
-  // Visible items per row (responsive)
-  const getVisibleItems = () => {
-    if (window.innerWidth < 480) return 3;
-    if (window.innerWidth < 768) return 4;
-    if (window.innerWidth < 1024) return 5;
-    return 6;
-  };
-
-  const [visibleCount, setVisibleCount] = useState(getVisibleItems());
-
-  useEffect(() => {
-    const handleResize = () => {
-      setVisibleCount(getVisibleItems());
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Auto-slide for both rows
-  useEffect(() => {
-    let interval;
-    if (isAutoPlaying) {
-      interval = setInterval(() => {
-        const totalRow1 = row1Companies.length - visibleCount;
-        const totalRow2 = row2Companies.length - visibleCount;
-        
-        setCurrentRow1Index((prev) => 
-          prev >= totalRow1 ? 0 : prev + 1
-        );
-        setCurrentRow2Index((prev) => 
-          prev >= totalRow2 ? 0 : prev + 1
-        );
-      }, 3000);
-    }
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, visibleCount, row1Companies.length, row2Companies.length]);
-
-  // Get visible companies with loop
-  const getVisibleCompanies = (companies, currentIndex) => {
-    if (companies.length <= visibleCount) return companies;
-    
-    const endIndex = currentIndex + visibleCount;
-    if (endIndex <= companies.length) {
-      return companies.slice(currentIndex, endIndex);
-    } else {
-      const firstPart = companies.slice(currentIndex);
-      const secondPart = companies.slice(0, endIndex - companies.length);
-      return [...firstPart, ...secondPart];
-    }
-  };
-
-  const visibleRow1 = getVisibleCompanies(row1Companies, currentRow1Index);
-  const visibleRow2 = getVisibleCompanies(row2Companies, currentRow2Index);
-
-  // Navigation functions
-  const goToPrevious = (row) => {
-    if (row === 1) {
-      setCurrentRow1Index((prev) =>
-        prev === 0 ? row1Companies.length - visibleCount : prev - 1
-      );
-    } else {
-      setCurrentRow2Index((prev) =>
-        prev === 0 ? row2Companies.length - visibleCount : prev - 1
-      );
-    }
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 5000);
-  };
-
-  const goToNext = (row) => {
-    if (row === 1) {
-      setCurrentRow1Index((prev) =>
-        prev >= row1Companies.length - visibleCount ? 0 : prev + 1
-      );
-    } else {
-      setCurrentRow2Index((prev) =>
-        prev >= row2Companies.length - visibleCount ? 0 : prev + 1
-      );
-    }
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 5000);
-  };
-
   // ============ HANDLE COURSE NAVIGATION ============
   const handleCourseNavigation = (href) => {
     navigate(href);
@@ -586,7 +502,7 @@ export default function Home() {
         <div className="hero-content">
           <div className="hero-badge">
             <Zap size={16} />
-            <span>Empowering Careers Since 2020</span>
+            <span>Empowering Since 2022</span>
           </div>
           <h1 className="hero-title">
             Build Your Future with <br />
@@ -645,15 +561,15 @@ export default function Home() {
             <div className="stat-item">
               <Award size={24} className="stat-icon" />
               <div>
-                <h3>26+</h3>
-                <p>College Tie-Ups</p>
+                <h3>150+</h3>
+                <p>Partner Colleges</p>
               </div>
             </div>
             <div className="stat-item">
               <BookOpen size={24} className="stat-icon" />
               <div>
-                <h3>4+</h3>
-                <p>Courses Offered</p>
+                <h3>6+</h3>
+                <p>Programs</p>
               </div>
             </div>
           </div>
@@ -663,7 +579,7 @@ export default function Home() {
       {/* Courses Section */}
       <section id="courses" className="courses-section">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header courses-header">
             <h2 className="section-title">Our <span className="highlight">Courses</span></h2>
             <p className="section-subtitle">
               Industry-oriented programs designed with Generative AI to make you job-ready
@@ -688,7 +604,7 @@ export default function Home() {
                     <Users size={14} /> {course.students}
                   </span>
                 </div>
-                <button 
+                <button
                   className="course-btn"
                   onClick={() => handleCourseNavigation(course.href)}
                 >
@@ -716,18 +632,24 @@ export default function Home() {
           </div>
 
           <div className="placement-slider-wrapper">
-            {/* Row 1 */}
-            <div className="placement-row">
-              <button 
-                className="placement-arrow prev" 
-                onClick={() => goToPrevious(1)}
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <div className="placement-track" ref={row1Ref}>
-                <div className="placement-logos">
-                  {visibleRow1.map((company) => (
-                    <div key={company.id} className="placement-logo-item">
+            <Swiper
+              className="placement-swiper"
+              modules={[Autoplay, FreeMode]}
+              loop
+              freeMode
+              grabCursor
+              slidesPerView="auto"
+              spaceBetween={24}
+              speed={5000}
+              autoplay={{
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }}
+            >
+              {placementRowOne.map((company) => (
+                <SwiperSlide key={company.id}>
+                  <div className="placement-logo-item">
                       <img 
                         src={company.logo} 
                         alt={company.name}
@@ -738,67 +660,43 @@ export default function Home() {
                         }}
                       />
                       <span className="company-name">{company.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <button 
-                className="placement-arrow next" 
-                onClick={() => goToNext(1)}
-              >
-                <ChevronRightIcon size={20} />
-              </button>
-            </div>
-
-            {/* Row 2 */}
-            <div className="placement-row">
-              <button 
-                className="placement-arrow prev" 
-                onClick={() => goToPrevious(2)}
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <div className="placement-track" ref={row2Ref}>
-                <div className="placement-logos">
-                  {visibleRow2.map((company) => (
-                    <div key={company.id} className="placement-logo-item">
-                      <img 
-                        src={company.logo} 
-                        alt={company.name}
-                        className="company-logo"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = '/assets/images/placeholder-logo.png';
-                        }}
-                      />
-                      <span className="company-name">{company.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <button 
-                className="placement-arrow next" 
-                onClick={() => goToNext(2)}
-              >
-                <ChevronRightIcon size={20} />
-              </button>
-            </div>
-
-            {/* Dots indicator for both rows */}
-            <div className="placement-dots">
-              {Array.from({ length: Math.ceil(row1Companies.length / visibleCount) }).map((_, index) => (
-                <button
-                  key={index}
-                  className={`placement-dot ${index === Math.floor(currentRow1Index / visibleCount) ? 'active' : ''}`}
-                  onClick={() => {
-                    setCurrentRow1Index(index * visibleCount);
-                    setCurrentRow2Index(index * visibleCount);
-                    setIsAutoPlaying(false);
-                    setTimeout(() => setIsAutoPlaying(true), 5000);
-                  }}
-                />
+                  </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
+            <Swiper
+              className="placement-swiper placement-swiper-reverse"
+              modules={[Autoplay, FreeMode]}
+              loop
+              freeMode
+              grabCursor
+              slidesPerView="auto"
+              spaceBetween={24}
+              speed={5000}
+              autoplay={{
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+                reverseDirection: true
+              }}
+            >
+              {placementRowTwo.map((company) => (
+                <SwiperSlide key={company.id}>
+                  <div className="placement-logo-item">
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="company-logo"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/assets/images/placeholder-logo.png';
+                      }}
+                    />
+                    <span className="company-name">{company.name}</span>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </section>
@@ -868,7 +766,7 @@ export default function Home() {
               <div className="sidebar-header">
                 <Building size={20} />
                 <h4>Partner Colleges</h4>
-                <span className="college-count">{filteredColleges.length}</span>
+                <span className="college-count">150+</span>
               </div>
               <div className="sidebar-search">
                 <Search size={16} />

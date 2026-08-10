@@ -18,8 +18,8 @@ import offerCareer from "/assets/images/cs.png";
 const About = () => {
   const stats = [
     { number: "2022", label: "Founded" },
-    { number: "500+", label: "Students Trained" },
-    { number: "4+", label: "Programs" },
+    { number: "2000+", label: "Students Trained" },
+    { number: "6+", label: "Programs" },
     { number: "95%", label: "Placement Rate" }
   ];
 
