@@ -7,7 +7,7 @@ import {
   FaArrowRight, FaCheckCircle, FaStar, FaMedal,
   FaTrophy, FaThumbsUp
 } from "react-icons/fa";
-import aboutIllustration from "/assets/images/about2.png";
+import aboutIllustration from "/assets/images/about11.png";
 import visionImage from "/assets/images/vision.png";
 import missionImage from "/assets/images/mission.png";
 import offerAnalytics from "/assets/images/offer-analytics.png";
@@ -31,10 +31,10 @@ const About = () => {
   ];
 
   const offers = [
-    { image: offerAnalytics, tag: "Trending", title: "Data Analytics with AI", desc: "Master SQL, Python, and AI-driven analytics", path: "/courses/data-analytics-with-gen-ai" },
-    { image: offerDataScience, tag: "Popular", title: "Data Science with AI", desc: "Deep dive into ML, NLP, and predictive modeling", path: "/courses/data-science-with-gen-ai" },
-    { image: offerFullstack, tag: "In-Demand", title: "Full Stack Development", desc: "Modern frameworks, databases, and cloud", path: "/courses/java-fullstack-with-gen-ai" },
-    { image: offerCareer, tag: "Bonus", title: "Career Support", desc: "Resume reviews, mock interviews, placement assistance", path: "/placement" }
+    { image: offerAnalytics, tag: "Trending", eyebrow: "Analytics Program", title: "Data Analytics with AI", desc: "Master SQL, Python, and AI-driven analytics", detail: "Industry-led curriculum", path: "/courses/data-analytics-with-gen-ai" },
+    { image: offerDataScience, tag: "Popular", eyebrow: "Advanced Program", title: "Data Science with AI", desc: "Deep dive into ML, NLP, and predictive modeling", detail: "Hands-on projects", path: "/courses/data-science-with-gen-ai" },
+    { image: offerFullstack, tag: "In-Demand", eyebrow: "Developer Program", title: "Full Stack Development", desc: "Modern frameworks, databases, and cloud", detail: "Career-ready training", path: "/courses/java-fullstack-with-gen-ai" },
+    { image: offerCareer, tag: "Included", eyebrow: "Student Success", title: "Career Support", desc: "Resume reviews, mock interviews, placement assistance", detail: "Dedicated mentorship", path: "/placement" }
   ];
 
   return (
@@ -77,9 +77,9 @@ const About = () => {
               <span className="rating-label">Average Rating</span>
               <span className="rating-count">(2,847 reviews)</span>
             </div>
-            <button className="hero-cta">
+            <Link to="/#courses" className="hero-cta">
               Explore Programs <FaArrowRight className="cta-icon" />
-            </button>
+            </Link>
           </div>
           <div className="about-hero-right">
             <div className="hero-image-wrapper">
@@ -174,22 +174,26 @@ const About = () => {
           <p className="section-subtitle">Comprehensive programs designed for career success</p>
         </div>
         <div className="offer-grid">
-          {offers.map((offer, index) => (
-            <div key={index} className="offer-card">
+          {offers.map((offer) => (
+            <article key={offer.title} className="offer-card">
               <div className="offer-image-wrap">
                 <img src={offer.image} alt={offer.title} className="offer-image" />
                 <span className="offer-tag">{offer.tag}</span>
-                <div className="offer-image-overlay">
-                  <Link to={offer.path} className="offer-view-more" aria-label={`View more about ${offer.title}`}>
-                    View More <FaArrowRight className="view-more-icon" />
+              </div>
+              <div className="offer-card-body">
+                <span className="offer-eyebrow">{offer.eyebrow}</span>
+                <h3>{offer.title}</h3>
+                <p>{offer.desc}</p>
+                <div className="offer-card-footer">
+                  <span className="offer-detail">
+                    <FaCheckCircle aria-hidden="true" /> {offer.detail}
+                  </span>
+                  <Link to={offer.path} className="offer-view-more" aria-label={`Explore ${offer.title}`}>
+                    Explore <FaArrowRight className="view-more-icon" />
                   </Link>
                 </div>
               </div>
-              <div className="offer-card-body">
-                <h3>{offer.title}</h3>
-                <p>{offer.desc}</p>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>

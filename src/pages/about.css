@@ -571,25 +571,28 @@
 
 /* ===== WHAT WE OFFER ===== */
 .what-we-offer {
-  padding: 5rem 6%;
-  background: var(--white);
+  padding: 6rem 6%;
+  background: linear-gradient(180deg, var(--white) 0%, #f7faff 100%);
 }
 
 .offer-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .offer-card {
   background: var(--white);
-  border-radius: 0;
+  border: 1px solid rgba(0, 54, 110, 0.1);
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+  box-shadow: 0 12px 35px rgba(0, 35, 78, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .offer-card::before {
@@ -597,26 +600,29 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 5px;
-  height: 0;
+  width: 100%;
+  height: 4px;
   background: var(--gradient);
-  transition: height 0.5s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
   z-index: 4;
 }
 
 .offer-card:hover::before {
-  height: 100%;
+  transform: scaleX(1);
 }
 
 .offer-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-8px);
+  border-color: rgba(0, 116, 217, 0.24);
+  box-shadow: 0 22px 48px rgba(0, 35, 78, 0.15);
 }
 
 .offer-image-wrap {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 220px;
   overflow: hidden;
 }
 
@@ -625,7 +631,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: grayscale(15%);
+  filter: saturate(0.92);
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
 }
 
@@ -633,71 +639,56 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 28, 70, 0) 45%, rgba(0, 28, 70, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(0, 28, 70, 0.02) 35%, rgba(0, 28, 70, 0.58) 100%);
   transition: var(--transition);
 }
 
 .offer-card:hover .offer-image {
-  transform: scale(1.12);
-  filter: grayscale(0%);
+  transform: scale(1.07);
+  filter: saturate(1.08);
 }
 
 .offer-tag {
   position: absolute;
-  top: 1.2rem;
-  left: 0;
-  background: var(--gradient);
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 28, 70, 0.88);
+  backdrop-filter: blur(8px);
   color: var(--white);
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 0.4rem 1.2rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
   z-index: 2;
-}
-
-.offer-image-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 28, 70, 0.55);
-  opacity: 0;
-  transition: var(--transition);
-  z-index: 3;
-}
-
-.offer-card:hover .offer-image-overlay {
-  opacity: 1;
 }
 
 .offer-view-more {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.8rem 1.8rem;
-  background: var(--white);
-  color: var(--navy);
-  border: none;
-  border-radius: 50px;
-  font-size: 0.9rem;
+  padding: 0.7rem 1rem;
+  background: rgba(0, 116, 217, 0.09);
+  color: var(--gradient-start);
+  border-radius: 10px;
+  font-size: 0.84rem;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
-  transform: translateY(15px);
-  opacity: 0;
   transition: var(--transition);
-}
-
-.offer-card:hover .offer-view-more {
-  transform: translateY(0);
-  opacity: 1;
+  white-space: nowrap;
 }
 
 .offer-view-more:hover {
   background: var(--gradient);
   color: var(--white);
+}
+
+.offer-view-more:focus-visible {
+  outline: 3px solid rgba(118, 30, 107, 0.25);
+  outline-offset: 3px;
 }
 
 .view-more-icon {
@@ -709,7 +700,19 @@
 }
 
 .offer-card-body {
-  padding: 1.8rem 1.8rem 2.2rem;
+  padding: 1.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.offer-eyebrow {
+  color: var(--gradient-start);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
 }
 
 .offer-card h3 {
@@ -724,6 +727,31 @@
   color: var(--gray-mid);
   font-size: 0.95rem;
   line-height: 1.65;
+  margin-bottom: 1.35rem;
+}
+
+.offer-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 54, 110, 0.09);
+}
+
+.offer-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gray-mid);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.offer-detail svg {
+  flex: 0 0 auto;
+  color: #18a56f;
 }
 
 /* ===== WHY CHOOSE US ===== */

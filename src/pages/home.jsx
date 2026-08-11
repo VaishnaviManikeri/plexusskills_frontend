@@ -36,6 +36,7 @@ import {
   Target,
   Rocket
 } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 import logo from "/assets/logo/logo1.png";
 
 // ============ COURSES DATA ============
@@ -160,6 +161,12 @@ const placementCompanies = [
 const placementMidpoint = Math.ceil(placementCompanies.length / 2);
 const placementRowOne = placementCompanies.slice(0, placementMidpoint);
 const placementRowTwo = placementCompanies.slice(placementMidpoint);
+
+// const instagramReels = [
+//   { id: "DbTA-asIH6R", url: "https://www.instagram.com/p/DbTA-asIH6R/" },
+//   { id: "DSHvXq-iGIP", url: "https://www.instagram.com/p/DSHvXq-iGIP/" },
+//   { id: "DSabVeIghHW", url: "https://www.instagram.com/p/DSabVeIghHW/" }
+// ];
 
 // ============ COLLEGES DATA ============
 const colleges = [
@@ -700,6 +707,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Instagram Reels Section */}
+      {/* <section className="instagram-section" aria-labelledby="instagram-section-title">
+        <div className="container">
+          <div className="section-header instagram-header">
+            <span className="instagram-tag"><FaInstagram size={17} /> FOLLOW OUR JOURNEY</span>
+            <h2 id="instagram-section-title" className="section-title">
+              Latest from <span className="highlight">Instagram</span>
+            </h2>
+            <p className="section-subtitle">
+              Watch student moments, learning experiences, and updates from Plexus Skills.
+            </p>
+          </div>
+
+          <div className="instagram-reels-grid">
+            {instagramReels.map((reel, index) => (
+              <article className="instagram-reel-card" key={reel.id}>
+                <iframe
+                  src={`https://www.instagram.com/p/${reel.id}/embed/`}
+                  title={`Plexus Skills Instagram post ${index + 1}`}
+                  loading="lazy"
+                  scrolling="no"
+                  allow="encrypted-media"
+                />
+                <a href={reel.url} target="_blank" rel="noreferrer">View on Instagram</a>
+              </article>
+            ))}
+          </div>
+
+          <div className="instagram-follow-wrap">
+            <a
+              className="instagram-follow-btn"
+              href="https://www.instagram.com/plexusskills/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram size={20} /> Follow @plexusskills
+            </a>
+          </div>
+        </div>
+      </section> */}
 
       {/* Why Choose Us Section */}
       <section id="why-choose-us" className="why-choose-section">
