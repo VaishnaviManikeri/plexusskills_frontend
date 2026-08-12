@@ -234,9 +234,13 @@
 .user-name {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #031234;
+  color: #374151 !important;
   margin: 0 0 2px 0;
   line-height: 1.2;
+}
+
+.app .testimonials-section .testimonial-card .testimonial-user .user-info .user-name {
+  color: #374151 !important;
 }
 
 .user-program {

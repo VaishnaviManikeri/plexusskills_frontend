@@ -1,0 +1,151 @@
+/* Shared responsive safety layer for public and admin layouts. */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body,
+#root { width: 100%; max-width: 100%; }
+
+html,
+body { overflow-x: clip; }
+
+img,
+video,
+iframe,
+svg { max-width: 100%; }
+
+img,
+video { height: auto; }
+
+main,
+section,
+article,
+aside,
+header,
+footer,
+nav,
+div { min-width: 0; }
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span { overflow-wrap: break-word; }
+
+input,
+select,
+textarea,
+button { max-width: 100%; }
+
+table { max-width: 100%; }
+
+@media (max-width: 1024px) {
+  .container,
+  [class$="-container"] { max-width: 100%; }
+
+  .app :is(.section-title, [class$="-title"]):not(.navbar-title) {
+    font-size: clamp(1.9rem, 5vw, 2.55rem);
+  }
+
+  .app :is(.hero-title, [class$="-hero"] h1) {
+    font-size: clamp(2.25rem, 7vw, 4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .app main > section,
+  .app .home > section { scroll-margin-top: 82px; }
+
+  .app :is(.section-title, [class$="-title"]):not(.navbar-title) {
+    font-size: clamp(1.65rem, 7vw, 2.15rem);
+    line-height: 1.18;
+  }
+
+  .app :is(.hero-title, [class$="-hero"] h1) {
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .app :is(.section-subtitle, [class$="-subtitle"]) {
+    font-size: clamp(.92rem, 3.5vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .app :is(
+    .courses-grid-one-line,
+    .roadmap-track,
+    .webinar-session-grid,
+    .contact-info-grid,
+    .placement-features-grid,
+    .reviews-grid,
+    .stats-grid,
+    .features-grid,
+    .offer-grid
+  ) { grid-template-columns: 1fr !important; }
+
+  .app :is(.hero-buttons, [class$="-hero-buttons"], [class$="-cta-buttons"]) {
+    flex-wrap: wrap;
+  }
+
+  .app :is(.hero-buttons, [class$="-hero-buttons"], [class$="-cta-buttons"]) > * {
+    max-width: 100%;
+  }
+
+  .enquiry-modal,
+  .webinar-modal,
+  .partnership-modal { width: 100%; max-width: calc(100vw - 20px); }
+
+  .enquiry-grid,
+  .webinar-form,
+  .partnership-form,
+  .registration-grid,
+  .advisor-form-grid { grid-template-columns: 1fr !important; }
+
+  .webinar-form-wide,
+  .registration-full,
+  .partnership-full-field { grid-column: auto !important; }
+}
+
+@media (max-width: 480px) {
+  .app main > section,
+  .app .home > section { scroll-margin-top: 72px; }
+
+  .app :is(.hero-title, [class$="-hero"] h1) {
+    font-size: clamp(1.75rem, 9.5vw, 2.4rem);
+  }
+
+  .app :is(.section-title, [class$="-title"]):not(.navbar-title) {
+    font-size: clamp(1.5rem, 7.5vw, 1.9rem);
+  }
+
+  input,
+  select,
+  textarea { font-size: 16px !important; }
+
+  .enquiry-overlay,
+  .webinar-modal-backdrop,
+  .partnership-modal-overlay { padding: 8px; }
+
+  .enquiry-modal,
+  .webinar-modal,
+  .partnership-modal {
+    max-width: calc(100vw - 16px);
+    max-height: calc(100dvh - 16px);
+  }
+
+  .whatsapp-float { right: 10px; }
+  .ai-assistant-container { right: 10px; }
+}
+
+@media (max-width: 360px) {
+  .navbar-container,
+  .topbar-container { padding-inline: 10px; }
+
+  .enquiry-reopen { width: 29px; height: 108px; }
+  .enquiry-reopen-label { font-size: 9px; }
+}

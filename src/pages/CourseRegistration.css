@@ -16,6 +16,9 @@
 .registration-consent { flex-direction: row !important; align-items: flex-start; margin: 22px 0; font-weight: 500 !important; }
 .registration-consent input { width: auto; margin-top: 4px; }
 .registration-submit, .registration-success button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 14px 25px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #761e6b, #e31b23); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.registration-submit { margin-top: 24px; }
+.registration-submit:disabled { cursor: wait; opacity: .7; }
+.registration-error { margin: 18px 0 0; border-radius: 9px; padding: 11px 13px; color: #b42335; background: #fff0f1; }
 .registration-success { display: flex; min-height: 400px; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .registration-success > svg { color: #168a4a; font-size: 4rem; }
 .registration-success p { max-width: 580px; color: #687289; line-height: 1.7; }

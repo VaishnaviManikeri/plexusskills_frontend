@@ -181,6 +181,20 @@ textarea:focus {
   transform: translateX(2px);
 }
 
+/* Maintain accessible heading contrast on navy and dark brand surfaces. */
+.app :is(
+  .hero,
+  [class$="-hero"],
+  .testimonials-section,
+  .webinar-expert-card,
+  .webinar-final-cta,
+  .registration-hero,
+  .advisor-hero
+) :is(h1, h2, h3, h4, h5, h6, .section-title):not(.user-name),
+.footer :is(h1, h2, h3, h4, h5, h6) {
+  color: #ffffff !important;
+}
+
 @media (max-width: 1024px) {
   .section-title {
     font-size: clamp(2rem, 5vw, 2.5rem);

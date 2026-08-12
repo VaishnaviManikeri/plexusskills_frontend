@@ -377,7 +377,7 @@ const Careers = () => {
                 </div>
 
                 {/* Apply Button */}
-                <button onClick={openApplication} className="w-full bg-gradient-to-r from-[#761E6B] to-[#E31B23] text-white px-6 py-4 rounded-xl font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                <button onClick={openApplication} className="w-full bg-[#A51C30] hover:bg-[#D62828] text-white px-6 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                   Apply Now
                   <FaArrowRight size={16} />
                 </button>
@@ -399,7 +399,7 @@ const Careers = () => {
                 <FaCheckCircle className="text-green-600 text-6xl mb-4" />
                 <h2 id="application-title" className="text-2xl font-bold text-[#001C46]">Application received!</h2>
                 <p className="text-gray-600 mt-3 mb-6">Thank you, {applicationForm.name}. Our HR team will review your application and contact you.</p>
-                <button type="button" onClick={closeApplication} className="bg-gradient-to-r from-[#761E6B] to-[#E31B23] text-white px-8 py-3 rounded-full font-semibold">Done</button>
+                <button type="button" onClick={closeApplication} className="bg-[#A51C30] hover:bg-[#D62828] text-white px-8 py-3 rounded-full font-semibold">Done</button>
               </div>
             ) : (
               <div className="p-6 md:p-8">
@@ -441,7 +441,7 @@ const Careers = () => {
                       <input type="file" name="resume" onChange={handleApplicationChange} accept=".pdf,.doc,.docx" required className="sr-only" />
                     </span>
                   </label>
-                  <button type="submit" className="md:col-span-2 bg-gradient-to-r from-[#761E6B] to-[#E31B23] text-white px-6 py-4 rounded-xl font-semibold hover:opacity-90 transition-all shadow-lg flex items-center justify-center gap-2">
+                  <button type="submit" className="md:col-span-2 bg-[#A51C30] hover:bg-[#D62828] text-white px-6 py-4 rounded-xl font-semibold transition-all shadow-lg flex items-center justify-center gap-2">
                     Submit Application <FaArrowRight size={16} />
                   </button>
                 </form>

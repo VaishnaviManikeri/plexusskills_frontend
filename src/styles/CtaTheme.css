@@ -1,8 +1,9 @@
 :root {
-  --plexus-cta-purple: #761e6b;
-  --plexus-cta-red: #e31b23;
-  --plexus-cta-navy: #001c46;
-  --plexus-cta-gradient: linear-gradient(135deg, #761e6b 0%, #e31b23 100%);
+  --plexus-cta-purple: #a51c30;
+  --plexus-cta-red: #d62828;
+  --plexus-cta-navy: #062b5c;
+  --plexus-cta-muted: #cbd5e1;
+  --plexus-cta-gradient: linear-gradient(135deg, #a51c30 0%, #a51c30 100%);
   --plexus-cta-height: 48px;
   --plexus-cta-radius: 10px;
 }
@@ -30,9 +31,17 @@
   .webinar-primary-btn,
   .webinar-card-cta,
   .webinar-submit-btn,
-  .offer-view-more
+  .offer-view-more,
+  .advisor-submit,
+  .registration-submit,
+  .partnership-submit,
+  .tieup-view-btn,
+  .instagram-follow-btn
+  ,.roadmap-cta
 ),
-.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn) {
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn),
+.enquiry-submit,
+.enquiry-success button {
   min-height: var(--plexus-cta-height) !important;
   padding: 0 22px !important;
   border-radius: var(--plexus-cta-radius) !important;
@@ -64,15 +73,23 @@
   .webinar-primary-btn,
   .webinar-card-cta,
   .webinar-submit-btn,
-  .offer-view-more
+  .offer-view-more,
+  .advisor-submit,
+  .registration-submit,
+  .partnership-submit,
+  .tieup-view-btn,
+  .instagram-follow-btn
+  ,.roadmap-cta
 ),
-.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn) {
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn),
+.enquiry-submit,
+.enquiry-success button {
   background: var(--plexus-cta-gradient) !important;
   background-color: var(--plexus-cta-purple) !important;
   color: #ffffff !important;
   border-color: transparent !important;
   text-decoration: none;
-  box-shadow: 0 8px 22px rgba(118, 30, 107, 0.24) !important;
+  box-shadow: 0 8px 22px rgba(165, 28, 48, 0.25) !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease !important;
 }
 
@@ -92,12 +109,22 @@
   .webinar-primary-btn,
   .webinar-card-cta,
   .webinar-submit-btn,
-  .offer-view-more
+  .offer-view-more,
+  .advisor-submit,
+  .registration-submit,
+  .partnership-submit,
+  .tieup-view-btn,
+  .instagram-follow-btn
+  ,.roadmap-cta
 ):hover,
-.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn):hover {
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn):hover,
+.enquiry-submit:hover,
+.enquiry-success button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(227, 27, 35, 0.3) !important;
-  opacity: 0.96;
+  background: #d62828 !important;
+  background-color: #d62828 !important;
+  box-shadow: 0 12px 30px rgba(214, 40, 40, 0.32) !important;
+  opacity: 1;
 }
 
 /* Shared secondary actions retain the same brand palette. */
@@ -109,12 +136,12 @@
   .mk-btn-secondary,
   .tieup-btn-secondary
 ) {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
+  background: transparent !important;
+  background-color: transparent !important;
   color: var(--plexus-cta-purple) !important;
   border-color: var(--plexus-cta-purple) !important;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0, 28, 70, 0.1) !important;
+  box-shadow: none !important;
   transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
@@ -126,11 +153,12 @@
   .mk-btn-secondary,
   .tieup-btn-secondary
 ):hover {
-  background: var(--plexus-cta-gradient) !important;
+  background: #d62828 !important;
+  background-color: #d62828 !important;
   color: #ffffff !important;
   border-color: transparent !important;
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(118, 30, 107, 0.25) !important;
+  box-shadow: 0 10px 26px rgba(214, 40, 40, 0.28) !important;
 }
 
 .app :is(
@@ -155,10 +183,18 @@
   .webinar-primary-btn,
   .webinar-card-cta,
   .webinar-submit-btn,
-  .offer-view-more
+  .offer-view-more,
+  .advisor-submit,
+  .registration-submit,
+  .partnership-submit,
+  .tieup-view-btn,
+  .instagram-follow-btn
+  ,.roadmap-cta
 ):focus-visible,
-.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn):focus-visible {
-  outline: 3px solid rgba(118, 30, 107, 0.28) !important;
+.webinar-modal :is(.webinar-primary-btn, .webinar-submit-btn):focus-visible,
+.enquiry-submit:focus-visible,
+.enquiry-success button:focus-visible {
+  outline: 3px solid rgba(165, 28, 48, 0.28) !important;
   outline-offset: 3px;
 }
 
@@ -173,6 +209,48 @@
   align-self: stretch;
   justify-content: center;
   margin-top: 20px;
+}
+
+/* Home course cards intentionally use the understated text-link action. */
+.app .course-card-one-line .course-btn,
+.app .course-card-one-line .course-btn:hover {
+  width: auto !important;
+  min-height: auto !important;
+  margin-top: auto !important;
+  padding: 4px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #062b5c !important;
+  box-shadow: none !important;
+  font-size: 0.78rem !important;
+  font-weight: 750 !important;
+}
+
+.app .course-card-one-line .course-btn:hover { color: #a51c30 !important; transform: none; }
+
+/* Keep the Home hero action comfortably inset from the search field edge. */
+.app .home .hero .search-btn {
+  width: auto !important;
+  margin-right: 7px !important;
+  border-radius: 50px !important;
+  background: #a51c30 !important;
+  background-color: #a51c30 !important;
+  color: #ffffff !important;
+}
+
+.app .home .hero .search-btn:hover {
+  background: #d62828 !important;
+  background-color: #d62828 !important;
+  color: #ffffff !important;
+}
+
+/* Public form completion actions use the same wine treatment. */
+.app .registration-success button {
+  background: var(--plexus-cta-gradient) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 22px rgba(165, 28, 48, 0.25) !important;
 }
 
 /* Keep the two Placement closing CTAs visually balanced. */
@@ -218,7 +296,13 @@
     .webinar-primary-btn,
     .webinar-card-cta,
     .webinar-submit-btn,
-    .offer-view-more
+    .offer-view-more,
+    .advisor-submit,
+    .registration-submit,
+    .partnership-submit,
+    .tieup-view-btn,
+    .instagram-follow-btn
+    ,.roadmap-cta
   ) {
     width: 100%;
   }

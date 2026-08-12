@@ -25,19 +25,12 @@ import {
   UserCheck,
   Star,
   Briefcase,
-  TrendingUp,
   Zap,
-  Clock,
   ArrowRight,
-  X,
-  Send,
-  CheckCircle,
   ShieldCheck,
   Target,
   Rocket
 } from "lucide-react";
-import { FaInstagram } from "react-icons/fa";
-import logo from "/assets/logo/logo1.png";
 
 // ============ COURSES DATA ============
 const courses = [
@@ -80,6 +73,33 @@ const courses = [
     level: "Beginner to Advanced",
     students: "300+",
     href: "/courses/digital-marketing"
+  }
+];
+
+const careerRoadmap = [
+  {
+    icon: <Target size={24} />,
+    step: "01",
+    title: "Career Counselling",
+    description: "Identify the right career path based on your interests, strengths, and professional goals."
+  },
+  {
+    icon: <BookOpen size={24} />,
+    step: "02",
+    title: "Industry Training",
+    description: "Build job-ready skills through expert-led sessions and a practical, industry-aligned curriculum."
+  },
+  {
+    icon: <Laptop size={24} />,
+    step: "03",
+    title: "Hands-on Projects",
+    description: "Apply your knowledge to real-world assignments and portfolio projects that demonstrate your skills."
+  },
+  {
+    icon: <Rocket size={24} />,
+    step: "04",
+    title: "Placement Preparation",
+    description: "Prepare your resume, professional profiles, aptitude, communication skills, and interviews."
   }
 ];
 
@@ -415,27 +435,6 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [collegeSearchTerm, setCollegeSearchTerm] = useState("");
 
-  // ============ POPUP STATE ============
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupFormData, setPopupFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    course: "",
-    message: ""
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Show popup on page load
-  useEffect(() => {
-    const hasSeenPopup = sessionStorage.getItem('plexusPopupShown');
-    if (!hasSeenPopup) {
-      setTimeout(() => {
-        setShowPopup(true);
-      }, 1500);
-    }
-  }, []);
-
   useEffect(() => {
     const sectionId = window.location.hash.slice(1);
     if (!sectionId) return;
@@ -444,26 +443,6 @@ export default function Home() {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     });
   }, []);
-
-  const handlePopupChange = (e) => {
-    setPopupFormData({ ...popupFormData, [e.target.name]: e.target.value });
-  };
-
-  const handlePopupSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    sessionStorage.setItem('plexusPopupShown', 'true');
-    setTimeout(() => {
-      setShowPopup(false);
-      setIsSubmitted(false);
-      setPopupFormData({ name: "", email: "", phone: "", course: "", message: "" });
-    }, 2000);
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
-    sessionStorage.setItem('plexusPopupShown', 'true');
-  };
 
   const filteredColleges = colleges.filter(college =>
     college.name.toLowerCase().includes(collegeSearchTerm.toLowerCase()) ||
@@ -600,17 +579,6 @@ export default function Home() {
                 </div>
                 <h3>{course.title}</h3>
                 <p>{course.description}</p>
-                <div className="course-meta">
-                  <span className="meta-tag">
-                    <Clock size={14} /> {course.duration}
-                  </span>
-                  <span className="meta-tag">
-                    <TrendingUp size={14} /> {course.level}
-                  </span>
-                  <span className="meta-tag">
-                    <Users size={14} /> {course.students}
-                  </span>
-                </div>
                 <button
                   className="course-btn"
                   onClick={() => handleCourseNavigation(course.href)}
@@ -620,6 +588,32 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Career Roadmap Section */}
+      <section className="roadmap-section" aria-labelledby="roadmap-title">
+        <div className="container">
+          <div className="section-header roadmap-header">
+            <span className="roadmap-eyebrow">Your Journey With Plexus</span>
+            <h2 id="roadmap-title" className="section-title">A clear roadmap from <span className="highlight">learning to career</span></h2>
+            <p className="section-subtitle">A structured path designed to help you choose confidently, learn practically, and become interview-ready.</p>
+          </div>
+
+          <div className="roadmap-track">
+            {careerRoadmap.map((item) => (
+              <article className="roadmap-step" key={item.step}>
+                <span className="roadmap-number">{item.step}</span>
+                <div className="roadmap-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <button type="button" className="roadmap-cta" onClick={() => navigate('/advisor')}>
+            Start Your Career Journey <ArrowRight size={18} />
+          </button>
         </div>
       </section>
 
@@ -884,7 +878,38 @@ export default function Home() {
                     <div className="detail-description">
                       <h4>About the College</h4>
                       <p>{selectedCollege.info}</p>
+                      <p>
+                        Through its academic association with Plexus Skills, students can gain
+                        additional exposure to industry-oriented learning, emerging technologies,
+                        and practical career guidance alongside their regular education.
+                      </p>
                     </div>
+
+                    <div className="college-partnership-benefits">
+                      <h4>What Students Gain From This Tie-Up</h4>
+                      <div className="college-benefit-grid">
+                        <div className="college-benefit-item">
+                          <Laptop size={19} />
+                          <div><strong>Industry Skill Training</strong><span>Practical sessions aligned with current job-market requirements.</span></div>
+                        </div>
+                        <div className="college-benefit-item">
+                          <UserCheck size={19} />
+                          <div><strong>Expert Guidance</strong><span>Career insights and learning support from experienced trainers.</span></div>
+                        </div>
+                        <div className="college-benefit-item">
+                          <Briefcase size={19} />
+                          <div><strong>Career Preparation</strong><span>Support for resumes, interviews, communication, and professional profiles.</span></div>
+                        </div>
+                        <div className="college-benefit-item">
+                          <Award size={19} />
+                          <div><strong>Practical Exposure</strong><span>Hands-on assignments, projects, workshops, and skill-development activities.</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="college-partnership-note">
+                      Program availability and schedules may vary by institution. Contact our team for current details.
+                    </p>
                   </div>
                 </div>
               )}
@@ -939,111 +964,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ INQUIRY POPUP ============ */}
-      {showPopup && (
-        <div className="popup-overlay" onClick={closePopup}>
-          <div className="popup-container" onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={closePopup}>
-              <X size={24} />
-            </button>
-            
-            {!isSubmitted ? (
-              <>
-                <div className="popup-header">
-                  <div className="popup-logo-wrapper">
-                    <img src={logo} alt="Plexus Skills" className="popup-logo" />
-                  </div>
-                  <h2>Get in Touch</h2>
-                  <p>Fill in your details and we'll get back to you within 24 hours</p>
-                </div>
-
-                <form className="popup-form" onSubmit={handlePopupSubmit}>
-                  <div className="popup-form-group">
-                    <label htmlFor="popup-name">Full Name</label>
-                    <input
-                      type="text"
-                      id="popup-name"
-                      name="name"
-                      placeholder="Enter your full name"
-                      value={popupFormData.name}
-                      onChange={handlePopupChange}
-                      autoFocus
-                      required
-                    />
-                  </div>
-
-                  <div className="popup-form-group">
-                    <label htmlFor="popup-email">Email Address</label>
-                    <input
-                      type="email"
-                      id="popup-email"
-                      name="email"
-                      placeholder="Enter your email"
-                      value={popupFormData.email}
-                      onChange={handlePopupChange}
-                      required
-                    />
-                  </div>
-
-                  <div className="popup-form-group">
-                    <label htmlFor="popup-phone">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="popup-phone"
-                      name="phone"
-                      placeholder="Enter your phone number"
-                      value={popupFormData.phone}
-                      onChange={handlePopupChange}
-                      required
-                    />
-                  </div>
-
-                  <div className="popup-form-group">
-                    <label htmlFor="popup-course">Interested Course</label>
-                    <select
-                      id="popup-course"
-                      name="course"
-                      value={popupFormData.course}
-                      onChange={handlePopupChange}
-                      required
-                    >
-                      <option value="">Select a course</option>
-                      {courses.map((course) => (
-                        <option key={course.id} value={course.title}>
-                          {course.title}
-                        </option>
-                      ))}
-                      <option value="Other">Other (Specify in message)</option>
-                    </select>
-                  </div>
-
-                  <div className="popup-form-group">
-                    <label htmlFor="popup-message">Message</label>
-                    <textarea
-                      id="popup-message"
-                      name="message"
-                      rows="3"
-                      placeholder="Write your message here..."
-                      value={popupFormData.message}
-                      onChange={handlePopupChange}
-                    ></textarea>
-                  </div>
-
-                  <button type="submit" className="popup-submit-btn">
-                    <Send size={18} /> Send Inquiry
-                  </button>
-                </form>
-              </>
-            ) : (
-              <div className="popup-success">
-                <CheckCircle size={56} className="success-icon" />
-                <h2>Thank You!</h2>
-                <p>Your inquiry has been sent successfully. Our team will get back to you within 24 hours.</p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

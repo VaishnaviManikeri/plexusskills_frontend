@@ -20,6 +20,8 @@ import BlogDetails from './pages/BlogDetails';
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import CourseEnquiryPopup from "./components/CourseEnquiryPopup";
+import ScrollReveal from "./components/ScrollReveal";
 import About from "./pages/About";
 import Home from "./pages/home";
 import Reviews from "./pages/Reviews";
@@ -36,6 +38,7 @@ import CourseRegistration from './pages/CourseRegistration';
 import Webinar from './pages/Webinar';
 import './styles/CtaTheme.css';
 import './styles/ProfessionalPolish.css';
+import './styles/Responsive.css';
 
 // Icons
 import { FaWhatsapp, FaTimes, FaMinus, FaPaperPlane } from 'react-icons/fa';
@@ -249,6 +252,7 @@ function App() {
   return (
     <Router>
       <div className="app">
+        <ScrollReveal />
         <Navbar />
         
         <Routes>
@@ -305,6 +309,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
+      <CourseEnquiryPopup />
 
       {/* WhatsApp Floating Button */}
       <a 

@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import './Webinar.css';
 import './WebinarFont.css';
+import { webinarAPI } from '../api';
 
 const sessions = [
   {
@@ -43,23 +44,25 @@ const outcomes = [
 ];
 
 const initialForm = {
-  session: sessions[0].title,
   fullName: '',
   mobile: '',
   email: '',
-  organization: '',
-  qualification: '',
+  webinarDate: '',
   attendeeType: 'Student'
 };
+
+const today = new Date().toLocaleDateString('en-CA');
 
 export default function Webinar() {
   const [showForm, setShowForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState('');
   const [form, setForm] = useState(initialForm);
 
-  const openForm = (session = sessions[0].title) => {
-    setForm((current) => ({ ...current, session }));
+  const openForm = () => {
     setSubmitted(false);
+    setFormError('');
     setShowForm(true);
   };
 
@@ -81,9 +84,18 @@ export default function Webinar() {
     setForm((current) => ({ ...current, [name]: value }));
   };
 
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setFormError('');
+    try {
+      await webinarAPI.register(form);
+      setSubmitted(true);
+    } catch (error) {
+      setFormError(error.response?.data?.message || 'We could not reserve your seat. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -140,7 +152,7 @@ export default function Webinar() {
                 <h3>{session.title}</h3>
                 <p>{session.description}</p>
                 <div className="session-meta"><span><FaCalendarAlt /> Sunday</span><span><FaClock /> 2 Hours</span></div>
-                <button type="button" className="webinar-card-cta" onClick={() => openForm(session.title)}>Reserve My Seat <FaArrowRight /></button>
+                <button type="button" className="webinar-card-cta" onClick={openForm}>Reserve My Seat <FaArrowRight /></button>
               </article>
             );
           })}
@@ -206,19 +218,18 @@ export default function Webinar() {
               <div className="webinar-form-layout">
                 <div className="webinar-form-intro">
                   <span className="webinar-eyebrow"><span className="live-dot" /> Sunday Live</span>
-                  <h2 id="webinar-form-title">Reserve your webinar seat</h2>
+                  <h2 id="webinar-form-title">Webinar Registration Form</h2>
                   <p>Complete the form and take the first step towards a clearer career path.</p>
                   <div><FaCalendarAlt /><span><b>Every Sunday</b>11:00 AM IST • 2 Hours</span></div>
                 </div>
                 <form className="webinar-form" onSubmit={submitForm}>
-                  <label className="webinar-form-wide">Webinar Session<select name="session" value={form.session} onChange={updateForm}>{sessions.map((session) => <option key={session.title}>{session.title}</option>)}</select></label>
-                  <label>Full Name<input name="fullName" value={form.fullName} onChange={updateForm} required placeholder="Enter your name" autoFocus /></label>
-                  <label>Mobile Number<input name="mobile" type="tel" value={form.mobile} onChange={updateForm} required placeholder="Enter mobile number" /></label>
-                  <label>Email Address<input name="email" type="email" value={form.email} onChange={updateForm} required placeholder="Enter email address" /></label>
-                  <label>College / Company<input name="organization" value={form.organization} onChange={updateForm} required placeholder="Enter organization" /></label>
-                  <label>Qualification<input name="qualification" value={form.qualification} onChange={updateForm} required placeholder="Highest qualification" /></label>
-                  <label>You are a<select name="attendeeType" value={form.attendeeType} onChange={updateForm}><option>Student</option><option>Working Professional</option></select></label>
-                  <button className="webinar-submit-btn webinar-form-wide" type="submit">Confirm Registration <FaArrowRight /></button>
+                  <label>Full Name *<input name="fullName" value={form.fullName} onChange={updateForm} required maxLength="100" placeholder="Enter your full name" autoFocus /></label>
+                  <label>Mobile Number *<input name="mobile" type="tel" value={form.mobile} onChange={updateForm} required pattern="[0-9+() -]{7,20}" maxLength="20" placeholder="Enter mobile number" /></label>
+                  <label className="webinar-form-wide">Email ID *<input name="email" type="email" value={form.email} onChange={updateForm} required maxLength="150" placeholder="Enter email address" /></label>
+                  <label className="webinar-form-wide">Select Upcoming Webinar Date *<input name="webinarDate" type="date" min={today} value={form.webinarDate} onChange={updateForm} required /></label>
+                  <label className="webinar-form-wide">Current Status *<select name="attendeeType" value={form.attendeeType} onChange={updateForm} required><option>Student</option><option>Working Professional</option></select></label>
+                  {formError && <p className="webinar-form-wide webinar-form-error" role="alert">{formError}</p>}
+                  <button className="webinar-submit-btn webinar-form-wide" type="submit" disabled={submitting}>{submitting ? 'Reserving...' : 'Reserve My Seat'} <FaArrowRight /></button>
                   <small className="webinar-form-wide form-note">By registering, you agree to receive webinar updates from Plexus Skills.</small>
                 </form>
               </div>

@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Development always talks to the local backend. Production uses the deployed
+// URL supplied through VITE_API_URL.
+const API_URL = import.meta.env.DEV
+  ? 'http://localhost:5033/api'
+  : (import.meta.env.VITE_API_URL || '/api');
 
 const api = axios.create({
   baseURL: API_URL,
@@ -127,6 +131,18 @@ export const adminAPI = {
   login: (data) => api.post('/admin/login', data),
   register: (data) => api.post('/admin/register', data),
   getCurrent: () => api.get('/admin/me'),
+};
+
+export const enquiryAPI = {
+  submit: (data) => api.post('/enquiries', data),
+};
+
+export const webinarAPI = {
+  register: (data) => api.post('/webinar-registrations', data),
+};
+
+export const enrollmentAPI = {
+  submit: (data) => api.post('/enrollments', data),
 };
 
 export default api;
