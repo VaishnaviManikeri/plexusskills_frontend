@@ -1,0 +1,28 @@
+/* Site-wide typography: preserve component sizes and weights, unify font families. */
+:root {
+  --font-display: "Playfair", Georgia, serif;
+  --font-body: "Lato", Arial, sans-serif;
+}
+
+html,
+body,
+#root,
+.app {
+  font-family: var(--font-body);
+}
+
+body :where(*):not(code):not(pre):not(kbd):not(samp) {
+  font-family: var(--font-body) !important;
+}
+
+body :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-display) !important;
+}
+
+body :where(button, input, select, textarea, option) {
+  font-family: var(--font-body) !important;
+}
+
+body :where(code, pre, kbd, samp) {
+  font-family: "Courier New", monospace;
+}

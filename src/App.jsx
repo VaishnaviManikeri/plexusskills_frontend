@@ -39,6 +39,7 @@ import Webinar from './pages/Webinar';
 import './styles/CtaTheme.css';
 import './styles/ProfessionalPolish.css';
 import './styles/Responsive.css';
+import './styles/Typography.css';
 
 // Icons
 import { FaWhatsapp, FaTimes, FaMinus, FaPaperPlane } from 'react-icons/fa';

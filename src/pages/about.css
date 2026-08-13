@@ -1,19 +1,19 @@
 /* about.css */
 :root {
-  --navy: #001C46;
-  --navy-light: #0A2A6B;
-  --navy-dark: #00123A;
+  --navy: #031234;
+  --navy-light: #062B5C;
+  --navy-dark: #020D26;
   --gradient-start: #761E6B;
   --gradient-end: #E31B23;
   --gradient: linear-gradient(135deg, #761E6B, #E31B23);
   --gradient-hover: linear-gradient(135deg, #8B2380, #F01F28);
   --white: #FFFFFF;
-  --off-white: #F5F7FC;
-  --gray-light: #E8EEFF;
+  --off-white: #F8F9FC;
+  --gray-light: #E7EAF0;
   --gray-mid: #5A6A8A;
   --gray-dark: #2A3A5A;
-  --shadow: 0 20px 60px rgba(0, 28, 70, 0.12);
-  --shadow-hover: 0 30px 80px rgba(0, 28, 70, 0.18);
+  --shadow: 0 20px 60px rgba(3, 18, 52, 0.12);
+  --shadow-hover: 0 30px 80px rgba(3, 18, 52, 0.18);
   --border-radius: 24px;
   --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -125,15 +125,15 @@
   font-size: 3.2rem;
   font-weight: 800;
   line-height: 1.2;
-  color: var(--navy);
+  color: var(--navy) !important;
+  -webkit-text-fill-color: var(--navy);
   margin-bottom: 1.2rem;
 }
 
 .about-hero-left h1 .highlight {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: none;
+  color: var(--navy) !important;
+  -webkit-text-fill-color: var(--navy);
 }
 
 .hero-tagline {
@@ -205,7 +205,7 @@
 }
 
 .star-icon {
-  color: #FFB800;
+  color: #d4a537;
   font-size: 1.1rem;
 }
 
@@ -275,7 +275,7 @@
   height: 480px;
   object-fit: cover;
   border-radius: 260px;
-  box-shadow: 0 25px 60px rgba(0, 28, 70, 0.2);
+  box-shadow: 0 25px 60px rgba(3, 18, 52, 0.2);
 }
 
 .floating-card {
@@ -572,7 +572,7 @@
 /* ===== WHAT WE OFFER ===== */
 .what-we-offer {
   padding: 6rem 6%;
-  background: linear-gradient(180deg, var(--white) 0%, #f7faff 100%);
+  background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
 }
 
 .offer-grid {
@@ -639,7 +639,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 28, 70, 0.02) 35%, rgba(0, 28, 70, 0.58) 100%);
+  background: linear-gradient(180deg, rgba(3, 18, 52, 0.02) 35%, rgba(3, 18, 52, 0.58) 100%);
   transition: var(--transition);
 }
 
@@ -652,7 +652,7 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background: rgba(0, 28, 70, 0.88);
+  background: rgba(3, 18, 52, 0.88);
   backdrop-filter: blur(8px);
   color: var(--white);
   font-size: 0.7rem;
@@ -873,7 +873,7 @@
 }
 
 .star-icon-small {
-  color: #FFB800;
+  color: #d4a537;
   font-size: 0.9rem;
 }
 
