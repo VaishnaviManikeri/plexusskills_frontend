@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import './Webinar.css';
 import './WebinarFont.css';
+import './WebinarNavy.css';
 import { webinarAPI } from '../api';
 
 const sessions = [

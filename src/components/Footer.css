@@ -369,3 +369,91 @@
     height: 2px;
   }
 }
+
+/* Responsive hardening for long contact details and touch devices */
+.footer__container,
+.footer__brand-col,
+.footer__link-col {
+  min-width: 0;
+}
+
+.footer__contact-item,
+.footer__contact-item a,
+.footer__link-list a {
+  overflow-wrap: anywhere;
+}
+
+.footer__socials {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .footer__container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__body {
+    padding-inline: clamp(16px, 5vw, 28px);
+  }
+
+  .footer__link-list a {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .footer__contact-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 0;
+  }
+
+  .footer__contact-sep {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__body {
+    padding: 30px 16px 22px;
+  }
+
+  .footer__logo {
+    max-width: 100%;
+  }
+
+  .footer__logo img {
+    max-width: min(150px, 70vw);
+    height: auto;
+    max-height: 32px;
+  }
+
+  .footer__social-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer__bottom {
+    padding-inline: 16px;
+  }
+
+  .footer__bottom p {
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer__body {
+    padding-inline: 12px;
+  }
+
+  .footer__contact-item,
+  .footer__link-list a {
+    font-size: 0.76rem;
+  }
+}

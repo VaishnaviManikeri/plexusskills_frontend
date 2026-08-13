@@ -796,11 +796,17 @@ export default function Home() {
       {/* College Tie-Ups Section */}
       <section id="college-tieups" className="college-section">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header college-section-header">
+            <span className="college-eyebrow"><Building size={16} /> Academic Partnerships</span>
             <h2 className="section-title">Our <span className="highlight">College Tie-Ups</span></h2>
             <p className="section-subtitle">
-              Partnered with leading educational institutions across Maharashtra
+              Building stronger career pathways through trusted academic partnerships across Maharashtra.
             </p>
+            <div className="college-trust-row" aria-label="Partnership highlights">
+              <span><strong>150+</strong> Partner Colleges</span>
+              <span><strong>Industry-led</strong> Learning</span>
+              <span><strong>Career-focused</strong> Training</span>
+            </div>
           </div>
           
           <div className="college-container">
@@ -815,13 +821,15 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Search colleges..."
+                  aria-label="Search partner colleges"
                   value={collegeSearchTerm}
                   onChange={(e) => setCollegeSearchTerm(e.target.value)}
                 />
               </div>
               <div className="college-list">
                 {filteredColleges.map((college) => (
-                  <div
+                  <button
+                    type="button"
                     key={college.id}
                     className={`college-item ${selectedCollege.id === college.id ? 'active' : ''}`}
                     onClick={() => setSelectedCollege(college)}
@@ -831,10 +839,10 @@ export default function Home() {
                       <p className="college-location">
                         <MapPin size={14} /> {college.location}
                       </p>
-                    </div>
-                    <ChevronRight size={16} className="chevron-icon" />
-                  </div>
-                ))}
+                      </div>
+                      <ChevronRight size={16} className="chevron-icon" />
+                    </button>
+                  ))}
               </div>
             </div>
 
@@ -883,28 +891,6 @@ export default function Home() {
                         additional exposure to industry-oriented learning, emerging technologies,
                         and practical career guidance alongside their regular education.
                       </p>
-                    </div>
-
-                    <div className="college-partnership-benefits">
-                      <h4>What Students Gain From This Tie-Up</h4>
-                      <div className="college-benefit-grid">
-                        <div className="college-benefit-item">
-                          <Laptop size={19} />
-                          <div><strong>Industry Skill Training</strong><span>Practical sessions aligned with current job-market requirements.</span></div>
-                        </div>
-                        <div className="college-benefit-item">
-                          <UserCheck size={19} />
-                          <div><strong>Expert Guidance</strong><span>Career insights and learning support from experienced trainers.</span></div>
-                        </div>
-                        <div className="college-benefit-item">
-                          <Briefcase size={19} />
-                          <div><strong>Career Preparation</strong><span>Support for resumes, interviews, communication, and professional profiles.</span></div>
-                        </div>
-                        <div className="college-benefit-item">
-                          <Award size={19} />
-                          <div><strong>Practical Exposure</strong><span>Hands-on assignments, projects, workshops, and skill-development activities.</span></div>
-                        </div>
-                      </div>
                     </div>
 
                     <p className="college-partnership-note">

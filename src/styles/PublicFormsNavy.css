@@ -1,0 +1,135 @@
+:root {
+  --form-navy: #031234;
+  --form-navy-hover: #0a2354;
+  --form-white: #ffffff;
+  --form-soft: #f5f8ff;
+  --form-border: #b9c7dd;
+}
+
+/* Shared navy and white presentation for every public submission form. */
+.enquiry-header,
+.registration-hero,
+.advisor-hero,
+.webinar-form-intro {
+  background: var(--form-navy) !important;
+  color: var(--form-white) !important;
+}
+
+.enquiry-modal,
+.registration-card,
+.advisor-form-card,
+.partnership-modal,
+.contact-form-wrapper,
+.webinar-modal,
+.webinar-form,
+[aria-labelledby="application-title"] {
+  background: var(--form-white) !important;
+}
+
+.enquiry-grid label,
+.registration-form label,
+.advisor-form label,
+.partnership-form label,
+.contact-form label,
+.webinar-form label,
+[aria-labelledby="application-title"] label {
+  color: var(--form-navy) !important;
+}
+
+.enquiry-grid input,
+.enquiry-grid select,
+.registration-form input,
+.registration-form select,
+.advisor-form input,
+.advisor-form select,
+.advisor-form textarea,
+.partnership-form input,
+.partnership-form select,
+.contact-form input,
+.contact-form textarea,
+.webinar-form input,
+.webinar-form select,
+[aria-labelledby="application-title"] input,
+[aria-labelledby="application-title"] select,
+[aria-labelledby="application-title"] textarea {
+  border-color: var(--form-border) !important;
+  background: var(--form-white) !important;
+  color: var(--form-navy) !important;
+}
+
+.enquiry-grid input:focus,
+.enquiry-grid select:focus,
+.registration-form input:focus,
+.registration-form select:focus,
+.advisor-form input:focus,
+.advisor-form select:focus,
+.advisor-form textarea:focus,
+.partnership-form input:focus,
+.partnership-form select:focus,
+.contact-form input:focus,
+.contact-form textarea:focus,
+.webinar-form input:focus,
+.webinar-form select:focus,
+[aria-labelledby="application-title"] input:focus,
+[aria-labelledby="application-title"] select:focus,
+[aria-labelledby="application-title"] textarea:focus {
+  border-color: var(--form-navy) !important;
+  outline: 2px solid rgba(3, 18, 52, 0.18) !important;
+  box-shadow: 0 0 0 3px rgba(3, 18, 52, 0.1) !important;
+}
+
+.enquiry-submit,
+.enquiry-success button,
+.enquiry-reopen,
+.registration-submit,
+.registration-success button,
+.advisor-submit,
+.advisor-success button,
+.partnership-submit,
+.partnership-success button,
+.contact-form .submit-btn,
+.webinar-form .webinar-submit-btn,
+.webinar-success button,
+[aria-labelledby="application-title"] button[type="submit"],
+[aria-labelledby="application-title"] button:not([aria-label]) {
+  background: var(--form-navy) !important;
+  color: var(--form-white) !important;
+  border-color: var(--form-navy) !important;
+  box-shadow: 0 9px 24px rgba(3, 18, 52, 0.2) !important;
+}
+
+.enquiry-submit:hover,
+.enquiry-success button:hover,
+.enquiry-reopen:hover,
+.registration-submit:hover,
+.registration-success button:hover,
+.advisor-submit:hover,
+.advisor-success button:hover,
+.partnership-submit:hover,
+.partnership-success button:hover,
+.contact-form .submit-btn:hover,
+.webinar-form .webinar-submit-btn:hover,
+.webinar-success button:hover,
+[aria-labelledby="application-title"] button[type="submit"]:hover,
+[aria-labelledby="application-title"] button:not([aria-label]):hover {
+  background: var(--form-navy-hover) !important;
+}
+
+.enquiry-success > svg,
+.registration-success > svg,
+.advisor-success > svg,
+.partnership-success-icon,
+.success-check,
+.contact-form .btn-icon,
+.partnership-modal-header > span,
+[aria-labelledby="application-title"] > div span {
+  color: var(--form-navy) !important;
+}
+
+.enquiry-icon,
+.webinar-form-intro > div,
+.enquiry-close,
+.partnership-close,
+.webinar-modal-close {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
