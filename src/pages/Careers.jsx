@@ -1,7 +1,7 @@
 // frontend/src/pages/Careers.jsx
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { careerAPI } from '../api';
+import { careerAPI, submissionAPI } from '../api';
 import { 
   FaBriefcase, 
   FaMapMarkerAlt, 
@@ -36,6 +36,8 @@ const Careers = () => {
   const [error, setError] = useState('');
   const [showApplication, setShowApplication] = useState(false);
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+  const [applicationSubmitting, setApplicationSubmitting] = useState(false);
+  const [applicationError, setApplicationError] = useState('');
   const [applicationForm, setApplicationForm] = useState({
     name: '',
     contact: '',
@@ -67,9 +69,12 @@ const Careers = () => {
     setApplicationSubmitted(false);
   };
 
-  const handleApplicationSubmit = (event) => {
+  const handleApplicationSubmit = async (event) => {
     event.preventDefault();
-    setApplicationSubmitted(true);
+    setApplicationSubmitting(true); setApplicationError('');
+    try { await submissionAPI.career(applicationForm); setApplicationSubmitted(true); }
+    catch (error) { setApplicationError(error.response?.data?.message || 'We could not submit your application. Please try again.'); }
+    finally { setApplicationSubmitting(false); }
   };
 
   useEffect(() => {
@@ -441,8 +446,9 @@ const Careers = () => {
                       <input type="file" name="resume" onChange={handleApplicationChange} accept=".pdf,.doc,.docx" required className="sr-only" />
                     </span>
                   </label>
-                  <button type="submit" className="md:col-span-2 bg-[#A51C30] hover:bg-[#D62828] text-white px-6 py-4 rounded-xl font-semibold transition-all shadow-lg flex items-center justify-center gap-2">
-                    Submit Application <FaArrowRight size={16} />
+                  {applicationError && <p className="md:col-span-2 text-red-700" role="alert">{applicationError}</p>}
+                  <button type="submit" disabled={applicationSubmitting} className="md:col-span-2 bg-[#A51C30] hover:bg-[#D62828] text-white px-6 py-4 rounded-xl font-semibold transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-60">
+                    {applicationSubmitting ? 'Submitting...' : 'Submit Application'} <FaArrowRight size={16} />
                   </button>
                 </form>
               </div>

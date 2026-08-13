@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './CollegeTieup.css';
+import { submissionAPI } from '../api';
 
 // Simple SVG Icon components
 const IconMap = () => (
@@ -78,6 +79,8 @@ const CollegeTieup = () => {
   const [selectedCity, setSelectedCity] = useState('All');
   const [showPartnershipForm, setShowPartnershipForm] = useState(false);
   const [partnershipSubmitted, setPartnershipSubmitted] = useState(false);
+  const [partnershipSubmitting, setPartnershipSubmitting] = useState(false);
+  const [partnershipError, setPartnershipError] = useState('');
   const [partnershipForm, setPartnershipForm] = useState({
     name: '',
     designation: '',
@@ -93,9 +96,12 @@ const CollegeTieup = () => {
     }));
   };
 
-  const handlePartnershipSubmit = (event) => {
+  const handlePartnershipSubmit = async (event) => {
     event.preventDefault();
-    setPartnershipSubmitted(true);
+    setPartnershipSubmitting(true); setPartnershipError('');
+    try { await submissionAPI.partnership(partnershipForm); setPartnershipSubmitted(true); }
+    catch (error) { setPartnershipError(error.response?.data?.message || 'We could not submit your registration. Please try again.'); }
+    finally { setPartnershipSubmitting(false); }
   };
 
   const closePartnershipForm = () => {
@@ -605,7 +611,8 @@ const CollegeTieup = () => {
                     College Name
                     <input name="collegeName" value={partnershipForm.collegeName} onChange={handlePartnershipChange} required placeholder="Enter college name" />
                   </label>
-                  <button type="submit" className="partnership-submit">Submit Registration <IconArrowRight /></button>
+                  {partnershipError && <p role="alert">{partnershipError}</p>}
+                  <button type="submit" className="partnership-submit" disabled={partnershipSubmitting}>{partnershipSubmitting ? 'Submitting...' : 'Submit Registration'} <IconArrowRight /></button>
                 </form>
               </>
             )}

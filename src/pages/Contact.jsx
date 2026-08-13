@@ -6,6 +6,7 @@ import {
   FaFacebookF, FaInstagram,
   FaPaperPlane, FaCheckCircle, FaUser, FaComment, FaBuilding
 } from "react-icons/fa";
+import { submissionAPI } from "../api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,19 +18,18 @@ const Contact = () => {
   });
 
   const [formStatus, setFormStatus] = useState(null);
+  const [formError, setFormError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate form submission
-    setFormStatus("success");
-    setTimeout(() => {
-      setFormStatus(null);
+    setFormStatus("submitting"); setFormError("");
+    try { await submissionAPI.contact(formData); setFormStatus("success");
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    }, 3000);
+    } catch (error) { setFormStatus(null); setFormError(error.response?.data?.message || "We could not send your message. Please try again."); }
   };
 
   const contactInfo = [
@@ -186,14 +186,14 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-btn">
+              <button type="submit" className="submit-btn" disabled={formStatus === "submitting"}>
                 {formStatus === "success" ? (
                   <>
                     <FaCheckCircle className="btn-icon" /> Message Sent!
                   </>
                 ) : (
                   <>
-                    <FaPaperPlane className="btn-icon" /> Send Message
+                    <FaPaperPlane className="btn-icon" /> {formStatus === "submitting" ? "Sending..." : "Send Message"}
                   </>
                 )}
               </button>
@@ -203,6 +203,7 @@ const Contact = () => {
                   <FaCheckCircle /> Your message has been sent successfully. We'll get back to you soon!
                 </div>
               )}
+              {formError && <div className="success-message" role="alert">{formError}</div>}
             </form>
           </div>
 

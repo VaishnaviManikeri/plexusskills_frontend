@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FaCheckCircle, FaEnvelope, FaPhone, FaPaperPlane } from "react-icons/fa";
 import "./Advisor.css";
+import { submissionAPI } from "../api";
 
 const courses = [
   "Data Analytics with Generative AI",
@@ -15,6 +16,8 @@ export default function Advisor() {
   const requestedCourse = searchParams.get("course") || "";
   const initialCourse = courses.includes(requestedCourse) ? requestedCourse : "";
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,9 +31,12 @@ export default function Advisor() {
     setFormData((current) => ({ ...current, [event.target.name]: event.target.value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true); setFormError("");
+    try { await submissionAPI.advisor(formData); setSubmitted(true); }
+    catch (error) { setFormError(error.response?.data?.message || "We could not submit your request. Please try again."); }
+    finally { setSubmitting(false); }
   };
 
   return (
@@ -90,7 +96,8 @@ export default function Advisor() {
                 What would you like help with?
                 <textarea name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Tell us about your goals or questions" />
               </label>
-              <button type="submit" className="advisor-submit"><FaPaperPlane /> Request Callback</button>
+              {formError && <p role="alert">{formError}</p>}
+              <button type="submit" className="advisor-submit" disabled={submitting}><FaPaperPlane /> {submitting ? "Submitting..." : "Request Callback"}</button>
             </form>
           )}
         </div>

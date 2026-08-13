@@ -143,4 +143,15 @@ export const enrollmentAPI = {
   submit: (data) => api.post('/enrollments', data),
 };
 
+export const submissionAPI = {
+  contact: (data) => api.post('/submissions/contact', data),
+  advisor: (data) => api.post('/submissions/advisor', data),
+  partnership: (data) => api.post('/submissions/partnership', data),
+  career: (data) => {
+    const body = new FormData();
+    Object.entries(data).forEach(([key, value]) => body.append(key, value));
+    return api.post('/submissions/career', body);
+  },
+};
+
 export default api;
