@@ -16,13 +16,6 @@ import offerFullstack from "/assets/images/fullstack.png";
 import offerCareer from "/assets/images/cs.png";
 
 const About = () => {
-  const stats = [
-    { number: "2022", label: "Founded" },
-    { number: "2000+", label: "Students Trained" },
-    { number: "6+", label: "Programs" },
-    { number: "95%", label: "Placement Rate" }
-  ];
-
   const values = [
     { icon: FaGraduationCap, title: "Excellence in Education", desc: "Industry-relevant curriculum designed by experts" },
     { icon: FaUsers, title: "Student-Centric", desc: "Every decision driven by student success" },
@@ -57,14 +50,6 @@ const About = () => {
               we empower careers in <strong>Data Analytics, Data Science, and Full
               Stack Development</strong>.
             </p>
-            <div className="about-stats">
-              {stats.map((stat, index) => (
-                <div key={index} className="stat-item">
-                  <span className="stat-number">{stat.number}</span>
-                  <span className="stat-label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
             <div className="hero-rating">
               <div className="rating-stars">
                 <FaStar className="star-icon" />
