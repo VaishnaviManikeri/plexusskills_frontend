@@ -93,7 +93,7 @@ export default function CourseEnquiryPopup() {
                 <form className="enquiry-form" onSubmit={handleSubmit}>
                   <div className="enquiry-grid">
                     <label>Full Name *<input name="fullName" value={form.fullName} onChange={handleChange} maxLength="100" autoComplete="name" required placeholder="Enter your full name" /></label>
-                    <label>Mobile Number *<input type="tel" name="mobileNumber" value={form.mobileNumber} onChange={handleChange} pattern="[0-9+() -]{7,20}" maxLength="20" autoComplete="tel" required placeholder="Enter your mobile number" /></label>
+                    <label>Mobile Number *<input type="tel" name="mobileNumber" value={form.mobileNumber} onChange={handleChange} pattern={"[0-9+\\(\\) \\-]{7,20}"} maxLength="20" autoComplete="tel" required placeholder="Enter your mobile number" /></label>
                     <label>Email ID<input type="email" name="email" value={form.email} onChange={handleChange} maxLength="150" autoComplete="email" placeholder="Enter your email address" /></label>
                     <label>Qualification *<input name="qualification" value={form.qualification} onChange={handleChange} maxLength="100" required placeholder="Your highest qualification" /></label>
                     <label>Interested Course *<select name="interestedCourse" value={form.interestedCourse} onChange={handleChange} required><option value="">Select a course</option>{courses.map((course) => <option key={course}>{course}</option>)}</select></label>
