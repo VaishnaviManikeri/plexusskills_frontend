@@ -69,7 +69,7 @@ export default function CourseRegistration() {
 
             <div className="registration-grid">
               <label>Full Name *<input name="fullName" value={formData.fullName} onChange={handleChange} required maxLength="100" autoComplete="name" placeholder="Enter your full name" /></label>
-              <label>Mobile Number *<input type="tel" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} required pattern="[0-9+() -]{7,20}" maxLength="20" autoComplete="tel" placeholder="Enter your mobile number" /></label>
+              <label>Mobile Number *<input type="tel" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} required pattern={"[0-9+\\(\\) \\-]{7,20}"} maxLength="20" autoComplete="tel" placeholder="Enter your mobile number" /></label>
               <label className="registration-full">Email ID *<input type="email" name="email" value={formData.email} onChange={handleChange} required maxLength="150" autoComplete="email" placeholder="Enter your email ID" /></label>
               <label className="registration-full">
                 Interested Course *

@@ -224,7 +224,7 @@ export default function Webinar() {
                 </div>
                 <form className="webinar-form" onSubmit={submitForm}>
                   <label>Full Name *<input name="fullName" value={form.fullName} onChange={updateForm} required maxLength="100" placeholder="Enter your full name" autoFocus /></label>
-                  <label>Mobile Number *<input name="mobile" type="tel" value={form.mobile} onChange={updateForm} required pattern="[0-9+() -]{7,20}" maxLength="20" placeholder="Enter mobile number" /></label>
+                  <label>Mobile Number *<input name="mobile" type="tel" value={form.mobile} onChange={updateForm} required pattern={"[0-9+\\(\\) \\-]{7,20}"} maxLength="20" placeholder="Enter mobile number" /></label>
                   <label className="webinar-form-wide">Email ID *<input name="email" type="email" value={form.email} onChange={updateForm} required maxLength="150" placeholder="Enter email address" /></label>
                   <label className="webinar-form-wide">Select Upcoming Webinar Date *<input name="webinarDate" type="date" min={today} value={form.webinarDate} onChange={updateForm} required /></label>
                   <label className="webinar-form-wide">Current Status *<select name="attendeeType" value={form.attendeeType} onChange={updateForm} required><option>Student</option><option>Working Professional</option></select></label>

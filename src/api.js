@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-// Use VITE_API_URL in both development and production. When it is not set,
-// fall back to the same-origin /api path (and Vite's local proxy).
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || '/api';
+const configuredUrl = import.meta.env.DEV
+  ? (import.meta.env.VITE_DEV_API_URL || 'http://localhost:5033/api')
+  : (import.meta.env.VITE_API_URL || '/api');
+const API_URL = configuredUrl.replace(/\/$/, '');
 
 const api = axios.create({
   baseURL: API_URL,
