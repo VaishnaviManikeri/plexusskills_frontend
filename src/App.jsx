@@ -1,41 +1,41 @@
 // App.jsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
 
 // Admin Pages
-import AdminLogin from './pages/admin/AdminLogin';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import GalleryAdmin from './pages/admin/GalleryAdmin';
-import NoticeAdmin from './pages/admin/NoticeAdmin';
-import CareerAdmin from './pages/admin/CareerAdmin';
-import BlogAdmin from './pages/admin/BlogAdmin';
+const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
+const GalleryAdmin = lazy(() => import('./pages/admin/GalleryAdmin'));
+const NoticeAdmin = lazy(() => import('./pages/admin/NoticeAdmin'));
+const CareerAdmin = lazy(() => import('./pages/admin/CareerAdmin'));
+const BlogAdmin = lazy(() => import('./pages/admin/BlogAdmin'));
 
 // Public Pages
-import Gallery from './pages/Gallery';
-import Notice from './pages/Notice';
-import Careers from './pages/Careers';
-import Blog from './pages/Blog';
-import BlogDetails from './pages/BlogDetails';
+const Gallery = lazy(() => import('./pages/Gallery'));
+const Notice = lazy(() => import('./pages/Notice'));
+const Careers = lazy(() => import('./pages/Careers'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogDetails = lazy(() => import('./pages/BlogDetails'));
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CourseEnquiryPopup from "./components/CourseEnquiryPopup";
 import ScrollReveal from "./components/ScrollReveal";
-import About from "./pages/About";
-import Home from "./pages/home";
-import Reviews from "./pages/Reviews";
+const About = lazy(() => import('./pages/About'));
+const Home = lazy(() => import('./pages/home'));
+const Reviews = lazy(() => import('./pages/Reviews'));
 import "./App.css";
-import DataAnalytics from './pages/DataAnalytics';
-import DataScience from './pages/DataScience';
-import JavaFullStack from './pages/JavaFullstack';
-import DigitalMarketing from './pages/Marketing';
-import CollegeTieup from './pages/CollegeTieup';
-import Placement from './pages/Placement';
-import Contact from './pages/Contact';
-import Advisor from './pages/Advisor';
-import CourseRegistration from './pages/CourseRegistration';
-import Webinar from './pages/Webinar';
+const DataAnalytics = lazy(() => import('./pages/DataAnalytics'));
+const DataScience = lazy(() => import('./pages/DataScience'));
+const JavaFullStack = lazy(() => import('./pages/JavaFullstack'));
+const DigitalMarketing = lazy(() => import('./pages/Marketing'));
+const CollegeTieup = lazy(() => import('./pages/CollegeTieup'));
+const Placement = lazy(() => import('./pages/Placement'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Advisor = lazy(() => import('./pages/Advisor'));
+const CourseRegistration = lazy(() => import('./pages/CourseRegistration'));
+const Webinar = lazy(() => import('./pages/Webinar'));
 import './styles/CtaTheme.css';
 import './styles/ProfessionalPolish.css';
 import './styles/Responsive.css';
@@ -256,6 +256,7 @@ function App() {
         <ScrollReveal />
         <Navbar />
         
+        <Suspense fallback={<div className="page-loading" role="status">Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -308,6 +309,7 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
+        </Suspense>
       </div>
       <Footer />
       <CourseEnquiryPopup />
